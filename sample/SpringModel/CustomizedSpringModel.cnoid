@@ -1,0 +1,165 @@
+optionalPlugins: [ ODE, Bullet, PhysX, AgX ]
+
+items: 
+  id: 0
+  name: "Root"
+  plugin: Base
+  class: RootItem
+  children: 
+    - 
+      id: 1
+      name: "World"
+      plugin: Body
+      class: WorldItem
+      data: 
+        collisionDetection: false
+      children: 
+        - 
+          id: 2
+          name: "CustomizedSpringModel"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${SHARE}/model/misc/CustomizedSpringModel.body"
+            currentBaseLink: "LOWER"
+            rootPosition: [  0.000000,  0.000000,  0.100000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  0.000000 ]
+            initialRootPosition: [  0.000000,  0.000000,  0.100000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000, -0.000000, 
+              -0.000000,  1.000000,  0.000000, 
+               0.000000, -0.000000,  1.000000 ]
+            initialJointPositions: [  0.000000 ]
+            zmp: [  0.000000,  0.000000,  0.000000 ]
+            selfCollisionDetection: false
+        - 
+          id: 3
+          name: "Floor"
+          plugin: Body
+          class: BodyItem
+          data: 
+            modelFile: "${SHARE}/model/misc/floor.body"
+            currentBaseLink: "BASE"
+            rootPosition: [  0.000000,  0.000000, -0.100000 ]
+            rootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            jointPositions: [  ]
+            initialRootPosition: [  0.000000,  0.000000, -0.100000 ]
+            initialRootAttitude: [ 
+               1.000000,  0.000000,  0.000000, 
+               0.000000,  1.000000,  0.000000, 
+               0.000000,  0.000000,  1.000000 ]
+            initialJointPositions: [  ]
+            zmp: [  0.000000,  0.000000,  0.000000 ]
+            selfCollisionDetection: false
+        - 
+          id: 4
+          name: "AISTSimulator"
+          plugin: Body
+          class: AISTSimulatorItem
+          data: 
+            realtimeSync: true
+            recordingMode: TimeBar range
+            timeLength: 60
+            allLinkPositionOutputMode: false
+            dynamicsMode: Forward dynamics
+            gravity: [ 0, 0, -9.80665 ]
+            staticFriction: 1
+            slipFriction: 1
+            cullingThresh: 0.02
+            errorCriterion: 0.001
+            maxNumIterations: 1000
+            contactCorrectionDepth: 0.0001
+            contactCorrectionVelocityRatio: 10
+            2Dmode: false
+        - 
+          id: 5
+          name: "ODESimulator"
+          plugin: ODE
+          class: ODESimulatorItem
+          data: 
+            realtimeSync: true
+            recordingMode: TimeBar range
+            timeLength: 60
+            allLinkPositionOutputMode: true
+            stepMode: Iterative (quick step)
+            gravity: [ 0, 0, -9.80665 ]
+            friction: 1
+            jointLimitMode: false
+            globalERP: 0.4
+            globalCFM: 1.0e-10
+            numIterations: 50
+            overRelaxation: 1.3
+            limitCorrectingVel: true
+            maxCorrectingVel: 1.0e-3
+            2Dmode: false
+        -
+          id: 6
+          name: "BulletSimulator"
+          plugin: Bullet
+          class: BulletSimulatorItem
+          data:
+            realtimeSync: true
+            recordingMode: TimeBar range
+            onlyActiveControlPeriod: true
+            timeLength: 60
+            allLinkPositionOutputMode: true
+            ErrorReductionParameter: 0.2
+            NumIterations: 10
+            Restitution: 0
+            Friction: 0.7
+            ERP2: 0
+            SplitImpulsePenetrationThreshold: -0.0001
+
+views: 
+  "Items": 
+    selected: [ 4 ]
+    checked: [ 2, 3 ]
+    expanded: [ 1, 2 ]
+  "Scene": 
+    mode: view
+    floorGird: true
+    collisions: true
+    shadow: false
+    floorGridSpan: 10
+    floorGridInterval: 0.5
+    hiPriorityRendering: false
+    camera: 
+      projection: perspetive
+      perspective: [ 40, 1.29272, 0.00362294, 7.3908 ]
+      ortho: [ -1, 1, -1, 1, -1, 1 ]
+      eye: [ -0.243298, 1.55507, 0.094242 ]
+      center: [ -0.0825026, 0.576457, 0.222547 ]
+      up: [ -0.0208027, 0.126607, 0.991735 ]
+  "Links": 
+    listingMode: "link list"
+    currentBodyItem: 2
+    bodyItems: 
+      - 
+        id: 2
+        selectedLinks: [ 0 ]
+  "Body / Link": 
+    showRotationMatrix: false
+  "Joint Sliders": 
+    showAllJoints: true
+    jointId: false
+    name: true
+    numColumns: 1
+    spinBox: true
+    slider: true
+    labelOnLeft: true
+    currentBodyItem: 2
+toolbars: 
+  "TimeBar": 
+    minTime: 0
+    maxTime: 10
+    frameRate: 500
+    playbackFrameRate: 100
+    currentTime: 0
+    speedScale: 1
