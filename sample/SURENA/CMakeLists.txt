@@ -20,13 +20,13 @@ option(BUILD_SURENA "Building a sample plugin \"SURENA\"" OFF)
 
 set(sources
   Sources/mainwindow.cpp
- Sources//chartform.cpp
+  Sources//chartform.cpp
   Sources/Robot.cpp
   Sources/LinkM.cpp
   Sources/TaskSpace.cpp
   Sources/MinimumJerkInterpolation.cpp
   Sources/taskspaceoffline.cpp
-  Sources/taskspaceonline.cpp
+  Sources/taskspaceonline1.cpp
   Sources/taskspaceonline2.cpp
   Sources/qcustomplot.cpp
   Sources/taskspaceofflineRamp.cpp
@@ -42,7 +42,7 @@ set(headers
   Headers/TaskSpace.h
   Headers/MinimumJerkInterpolation.h
   Headers/taskspaceoffline.h
-  Headers/taskspaceonline.h
+  Headers/taskspaceonline1.h
   Headers/taskspaceonline2.h
   Headers/qcustomplot.h
   Headers/taskspaceofflineRamp.h

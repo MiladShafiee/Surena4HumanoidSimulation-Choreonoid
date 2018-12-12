@@ -1,7 +1,7 @@
 #include "Headers/chartform.h"
 #include "ui_chartform.h"
 
-ChartForm::ChartForm(QWidget *parent,TaskSpace pelvis):
+ChartForm::ChartForm(QWidget *parent, TaskSpaceOnline1 pelvis):
 QMainWindow(parent),
 ui(new Ui::ChartForm)
 {
@@ -17,7 +17,7 @@ ChartForm::~ChartForm()
 
 
 
-void ChartForm::Plotchoreonoidtest(QCustomPlot *customPlot,TaskSpace Pelvis){
+void ChartForm::Plotchoreonoidtest(QCustomPlot *customPlot,TaskSpaceOnline1 Pelvis){
 
 customPlot->plotLayout()->clear();
 
@@ -85,7 +85,7 @@ QCPGraph *plot1 = customPlot->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisR
     plot1->keyAxis()->setLabel(" X Trajectory");
     plot1->valueAxis()->setLabel("Y Trajectory");
     plot1->setName("CoM");
-    plot1->setData(Pelvis.CoMXVector,Pelvis.CoMYVector);
+    plot1->setData(Pelvis.CoMXVector,Pelvis.timeVector);
     plot1->valueAxis()->setRange(-0.2, 0.2);
     plot1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::green), QBrush(Qt::green), 1.5));
     plot1->setName("CoM");
@@ -605,7 +605,7 @@ void ChartForm::PlotFootOffline(TaskSpaceOffline Pelvis){
 
 
 
-void ChartForm::Plot(TaskSpace Pelvis){
+void ChartForm::Plot(TaskSpaceOnline1 Pelvis){
     // ui->widget1->plotLayout()->clear(); // clear default axis rect so we can start from scratch
 
     //    ui->widget1->setLocale(QLocale(QLocale::English, QLocale::UnitedKingdom)); // period as decimal separator and comma as thousand separator
@@ -691,216 +691,216 @@ void ChartForm::Plot(TaskSpace Pelvis){
 
 
 
-    QCPGraph *plot1 = ui->widget1->addGraph(AxisRect1->axis(QCPAxis::atBottom), AxisRect1->axis(QCPAxis::atLeft));
-    plot1->keyAxis()->setLabel(" X Trajectory");
-    plot1->valueAxis()->setLabel("Y Trajectory");
-    plot1->setName("CoM");
-    plot1->setData(Pelvis.CoMXVector,Pelvis.CoMYVector);
-    // plot1->valueAxis()->setRange(-0.2, 0.2);
-    // plot1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::green), QBrush(Qt::green), 1.5));
-    plot1->setName("CoM");
-    plot1->setLineStyle(QCPGraph::lsLine);
-    plot1->setPen(QPen(QColor("#00ff00"), 2.5));
-    plot1->rescaleAxes();
+//    QCPGraph *plot1 = ui->widget1->addGraph(AxisRect1->axis(QCPAxis::atBottom), AxisRect1->axis(QCPAxis::atLeft));
+//    plot1->keyAxis()->setLabel(" X Trajectory");
+//    plot1->valueAxis()->setLabel("Y Trajectory");
+//    plot1->setName("CoM");
+//    plot1->setData(Pelvis.CoMXVector,Pelvis.CoMYVector);
+//    // plot1->valueAxis()->setRange(-0.2, 0.2);
+//    // plot1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::green), QBrush(Qt::green), 1.5));
+//    plot1->setName("CoM");
+//    plot1->setLineStyle(QCPGraph::lsLine);
+//    plot1->setPen(QPen(QColor("#00ff00"), 2.5));
+//    plot1->rescaleAxes();
 
 
-    QCPGraph *plot11 = ui->widget1->addGraph(AxisRect1->axis(QCPAxis::atBottom), AxisRect1->axis(QCPAxis::atLeft));
-    plot11->setData(Pelvis.DCMXVector,Pelvis.DCMYVector);
+//    QCPGraph *plot11 = ui->widget1->addGraph(AxisRect1->axis(QCPAxis::atBottom), AxisRect1->axis(QCPAxis::atLeft));
+//    plot11->setData(Pelvis.DCMXVector,Pelvis.DCMYVector);
 
-    plot11->setLineStyle(QCPGraph::lsLine);
-    plot11->rescaleKeyAxis();
-    //plot11->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCross, QPen(Qt::blue), QBrush(Qt::blue), 1.5));
-    plot11->setName("DCM");
-    plot11->setPen(QPen(QColor("blue"), 3));
-
-
-
-    QCPGraph *plot111 = ui->widget1->addGraph(AxisRect1->axis(QCPAxis::atBottom), AxisRect1->axis(QCPAxis::atLeft));
-    plot111->setData(Pelvis.EndCoPXVector,Pelvis.EndCoPYVector);
-    plot111->valueAxis()->setRange(-0.2, 0.4);
-    plot111->setLineStyle(QCPGraph::lsLine);
-    plot111->rescaleKeyAxis();
-    plot111->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::red), QBrush(Qt::red), 3));
-    plot111->setName("CoP");
-    // ui->widget1->plotLayout()->addElement(3, 0, new QCPTextElement(ui->widget1, "Way too many graphs in one plot", QFont("sans", 12, QFont::Bold)));
-    plot111->setPen(QPen(QColor("magenta"), 2.5));
+//    plot11->setLineStyle(QCPGraph::lsLine);
+//    plot11->rescaleKeyAxis();
+//    //plot11->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCross, QPen(Qt::blue), QBrush(Qt::blue), 1.5));
+//    plot11->setName("DCM");
+//    plot11->setPen(QPen(QColor("blue"), 3));
 
 
 
-    QCPLegend *legend1 = new QCPLegend();
-    legend1->setLayer("legend1");
-    AxisRect1->insetLayout()->addElement(legend1,Qt::AlignTop|Qt::AlignRight);
-    legend1->addItem(new QCPPlottableLegendItem(legend1,plot1));
-    legend1->addItem(new QCPPlottableLegendItem(legend1,plot11));
-    legend1->addItem(new QCPPlottableLegendItem(legend1,plot111));
-    legend1->setBrush(QBrush(QColor(255,255,255,150)));
-    //legend1->setVisible(true);
-
-
-    QCPGraph *plot2 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
-    plot2->setName("CoMX");
-    plot2->setData(Pelvis.timeVector,Pelvis.CoMXVector);
-    plot2->keyAxis()->setLabel("time(s)");
-    plot2->valueAxis()->setLabel("X Trajectory");
-    // plot1->valueAxis()->setRange(-0.2, 0.2);
-    // plot2->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::green), QBrush(Qt::green), 2));
-    plot2->keyAxis()->setLabel("time(s)");
-    plot2->valueAxis()->setLabel("X trajectory");
-    plot2->setLineStyle(QCPGraph::lsLine);
-    //    QPen blueDotPen;
-    //    blueDotPen.setColor(QColor(30, 40, 255, 150));
-    //    blueDotPen.setStyle(Qt::DotLine);
-    plot2->setPen(QPen(QColor("#00ff00"), 2));
-    plot2->rescaleAxes();
+//    QCPGraph *plot111 = ui->widget1->addGraph(AxisRect1->axis(QCPAxis::atBottom), AxisRect1->axis(QCPAxis::atLeft));
+//    plot111->setData(Pelvis.EndCoPXVector,Pelvis.EndCoPYVector);
+//    plot111->valueAxis()->setRange(-0.2, 0.4);
+//    plot111->setLineStyle(QCPGraph::lsLine);
+//    plot111->rescaleKeyAxis();
+//    plot111->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::red), QBrush(Qt::red), 3));
+//    plot111->setName("CoP");
+//    // ui->widget1->plotLayout()->addElement(3, 0, new QCPTextElement(ui->widget1, "Way too many graphs in one plot", QFont("sans", 12, QFont::Bold)));
+//    plot111->setPen(QPen(QColor("magenta"), 2.5));
 
 
 
-
-    QCPGraph *plot22 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
-    plot22->setData(Pelvis.timeVector,Pelvis.DCMXVector);
-    //plot22->valueAxis()->setRange(-0.2, 0.2);
-    plot22->setLineStyle(QCPGraph::lsLine);
-    plot22->setPen(QPen(QColor("blue"), 2));
-    plot22->rescaleKeyAxis();
-    plot22->setName("DCMX");
-    // ui->widget1->plotLayout()->addElement(3, 0, new QCPTextElement(ui->widget1, "Way too many graphs in one plot", QFont("sans", 12, QFont::Bold)));
-
+//    QCPLegend *legend1 = new QCPLegend();
+//    legend1->setLayer("legend1");
+//    AxisRect1->insetLayout()->addElement(legend1,Qt::AlignTop|Qt::AlignRight);
+//    legend1->addItem(new QCPPlottableLegendItem(legend1,plot1));
+//    legend1->addItem(new QCPPlottableLegendItem(legend1,plot11));
+//    legend1->addItem(new QCPPlottableLegendItem(legend1,plot111));
+//    legend1->setBrush(QBrush(QColor(255,255,255,150)));
+//    //legend1->setVisible(true);
 
 
-    QCPGraph *plot222 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
-    plot222->setData(Pelvis.timeVector,Pelvis.EndCoPXVector);
-    // plot222->valueAxis()->setRange(-0.2, 0.2);
-    plot222->setLineStyle(QCPGraph::lsLine);
-    plot222->rescaleKeyAxis();
-    plot222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
-    plot222->setPen(QPen(QColor("magenta"), 2.5));
-    plot222->setName("CoPX");
-
-
-    QCPGraph *plot2222 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
-    plot2222->setData(Pelvis.timeVector,Pelvis.DCMdsXVector);
-    // plot222->valueAxis()->setRange(-0.2, 0.2);
-    QPen blueDotPen;
-    blueDotPen.setColor(QColor("cyan"));
-    blueDotPen.setStyle(Qt::DashLine);
-    blueDotPen.setWidthF(2);
-   // customPlot->graph(3)->setPen(blueDotPen);
-   // plot2222->setLineStyle(QCPGraph::lsLine);
-    plot2222->rescaleKeyAxis();
-   // plot2222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
-    plot2222->setPen(blueDotPen);
-    plot2222->setName("DCMds");
-
-    QCPGraph *plot22222 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
-    plot22222->setData(Pelvis.timeVector,Pelvis.CoMdsXVector);
-    // plot222->valueAxis()->setRange(-0.2, 0.2);
-    QPen blueDotPen1;
-    blueDotPen1.setColor(QColor("green"));
-    blueDotPen1.setStyle(Qt::DashLine);
-    blueDotPen1.setWidthF(2);
-   // customPlot->graph(3)->setPen(blueDotPen);
-   // plot2222->setLineStyle(QCPGraph::lsLine);
-    plot22222->rescaleKeyAxis();
-   // plot2222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
-    plot22222->setPen(blueDotPen1);
-    plot22222->setName("CoMds");
+//    QCPGraph *plot2 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
+//    plot2->setName("CoMX");
+//    plot2->setData(Pelvis.timeVector,Pelvis.CoMXVector);
+//    plot2->keyAxis()->setLabel("time(s)");
+//    plot2->valueAxis()->setLabel("X Trajectory");
+//    // plot1->valueAxis()->setRange(-0.2, 0.2);
+//    // plot2->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::green), QBrush(Qt::green), 2));
+//    plot2->keyAxis()->setLabel("time(s)");
+//    plot2->valueAxis()->setLabel("X trajectory");
+//    plot2->setLineStyle(QCPGraph::lsLine);
+//    //    QPen blueDotPen;
+//    //    blueDotPen.setColor(QColor(30, 40, 255, 150));
+//    //    blueDotPen.setStyle(Qt::DotLine);
+//    plot2->setPen(QPen(QColor("#00ff00"), 2));
+//    plot2->rescaleAxes();
 
 
 
 
-    QCPLegend *legend2 = new QCPLegend();
-    legend2->setLayer("legend1");
-    AxisRect2->insetLayout()->addElement(legend2,Qt::AlignBottom|Qt::AlignRight);
-    legend2->addItem(new QCPPlottableLegendItem(legend2,plot2));
-    legend2->addItem(new QCPPlottableLegendItem(legend2,plot22));
-    legend2->addItem(new QCPPlottableLegendItem(legend2,plot222));
-    legend2->addItem(new QCPPlottableLegendItem(legend2,plot2222));
-    legend2->addItem(new QCPPlottableLegendItem(legend2,plot22222));
+//    QCPGraph *plot22 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
+//    plot22->setData(Pelvis.timeVector,Pelvis.DCMXVector);
+//    //plot22->valueAxis()->setRange(-0.2, 0.2);
+//    plot22->setLineStyle(QCPGraph::lsLine);
+//    plot22->setPen(QPen(QColor("blue"), 2));
+//    plot22->rescaleKeyAxis();
+//    plot22->setName("DCMX");
+//    // ui->widget1->plotLayout()->addElement(3, 0, new QCPTextElement(ui->widget1, "Way too many graphs in one plot", QFont("sans", 12, QFont::Bold)));
 
 
 
-    QCPGraph *plot3 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
-    plot3->setName("CoMY");
-    plot3->setData(Pelvis.timeVector,Pelvis.CoMYVector);
-    plot3->keyAxis()->setLabel("time(s)");
-    plot3->valueAxis()->setLabel("Y trajectory");
-    // plot1->valueAxis()->setRange(-0.2, 0.2);
-    //plot3->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::green), 2));
-    plot3->keyAxis()->setLabel("time(s)");
-    plot3->valueAxis()->setLabel("Y Trajectory");
-    plot3->setLineStyle(QCPGraph::lsLine);
-    plot3->setPen(QPen(QColor("#00ff00"), 2));
-    plot3->rescaleAxes();
+//    QCPGraph *plot222 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
+//    plot222->setData(Pelvis.timeVector,Pelvis.EndCoPXVector);
+//    // plot222->valueAxis()->setRange(-0.2, 0.2);
+//    plot222->setLineStyle(QCPGraph::lsLine);
+//    plot222->rescaleKeyAxis();
+//    plot222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
+//    plot222->setPen(QPen(QColor("magenta"), 2.5));
+//    plot222->setName("CoPX");
 
 
+//    QCPGraph *plot2222 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
+//    plot2222->setData(Pelvis.timeVector,Pelvis.DCMdsXVector);
+//    // plot222->valueAxis()->setRange(-0.2, 0.2);
+//    QPen blueDotPen;
+//    blueDotPen.setColor(QColor("cyan"));
+//    blueDotPen.setStyle(Qt::DashLine);
+//    blueDotPen.setWidthF(2);
+//   // customPlot->graph(3)->setPen(blueDotPen);
+//   // plot2222->setLineStyle(QCPGraph::lsLine);
+//    plot2222->rescaleKeyAxis();
+//   // plot2222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
+//    plot2222->setPen(blueDotPen);
+//    plot2222->setName("DCMds");
 
-
-    QCPGraph *plot33 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
-    plot33->setData(Pelvis.timeVector,Pelvis.DCMYVector);
-    plot33->valueAxis()->setRange(-0.2, 0.5);
-    plot33->setLineStyle(QCPGraph::lsLine);
-    plot33->rescaleKeyAxis();
-    //plot33->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::blue), 1.5));
-    plot33->setName("DCMY");
-    plot33->setPen(QPen(QColor("blue"), 2));
-    // ui->widget1->plotLayout()->addElement(3, 0, new QCPTextElement(ui->widget1, "Way too many graphs in one plot", QFont("sans", 12, QFont::Bold)));
-
-
-    QCPGraph *plot333 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
-    plot333->setData(Pelvis.timeVector,Pelvis.EndCoPYVector);
-    plot333->setLineStyle(QCPGraph::lsLine);
-    plot333->rescaleKeyAxis();
-    //plot333->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::magenta), 1.5));
-    plot333->setName("CoPY");
-
-    //    plot333->setPen(QPen(QColor(120, 120, 120), 2));
-    plot333->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
-    plot333->setPen(QPen(QColor("magenta"), 2.5));
-    // ui->widget1->plotLayout()->addElement(3, 0, new QCPTextElement(ui->widget1, "Way too many graphs in one plot", QFont("sans", 12, QFont::Bold)));
-
+//    QCPGraph *plot22222 = ui->widget1->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisRect2->axis(QCPAxis::atLeft));
+//    plot22222->setData(Pelvis.timeVector,Pelvis.CoMdsXVector);
+//    // plot222->valueAxis()->setRange(-0.2, 0.2);
+//    QPen blueDotPen1;
+//    blueDotPen1.setColor(QColor("green"));
+//    blueDotPen1.setStyle(Qt::DashLine);
+//    blueDotPen1.setWidthF(2);
+//   // customPlot->graph(3)->setPen(blueDotPen);
+//   // plot2222->setLineStyle(QCPGraph::lsLine);
+//    plot22222->rescaleKeyAxis();
+//   // plot2222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
+//    plot22222->setPen(blueDotPen1);
+//    plot22222->setName("CoMds");
 
 
 
 
-    QCPGraph *plot3333 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
-    plot3333->setData(Pelvis.timeVector,Pelvis.DCMdsYVector);
-    // plot222->valueAxis()->setRange(-0.2, 0.2);
-    QPen blueDotPen3;
-    blueDotPen3.setColor(QColor("cyan"));
-    blueDotPen3.setStyle(Qt::DashLine);
-    blueDotPen3.setWidthF(2);
-   // customPlot->graph(3)->setPen(blueDotPen);
-   // plot2222->setLineStyle(QCPGraph::lsLine);
-    plot3333->rescaleKeyAxis();
-   // plot2222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
-    plot3333->setPen(blueDotPen3);
-    plot3333->setName("DCMds");
-
-    QCPGraph *plot33333 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
-    plot33333->setData(Pelvis.timeVector,Pelvis.CoMdsYVector);
-    // plot222->valueAxis()->setRange(-0.2, 0.2);
-    QPen blueDotPen33;
-    blueDotPen33.setColor(QColor("green"));
-    blueDotPen33.setStyle(Qt::DashLine);
-    blueDotPen33.setWidthF(2);
-   // customPlot->graph(3)->setPen(blueDotPen);
-   // plot2222->setLineStyle(QCPGraph::lsLine);
-    plot33333->rescaleKeyAxis();
-   // plot2222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
-    plot33333->setPen(blueDotPen33);
-    plot33333->setName("CoMds");
+//    QCPLegend *legend2 = new QCPLegend();
+//    legend2->setLayer("legend1");
+//    AxisRect2->insetLayout()->addElement(legend2,Qt::AlignBottom|Qt::AlignRight);
+//    legend2->addItem(new QCPPlottableLegendItem(legend2,plot2));
+//    legend2->addItem(new QCPPlottableLegendItem(legend2,plot22));
+//    legend2->addItem(new QCPPlottableLegendItem(legend2,plot222));
+//    legend2->addItem(new QCPPlottableLegendItem(legend2,plot2222));
+//    legend2->addItem(new QCPPlottableLegendItem(legend2,plot22222));
 
 
 
-    QCPLegend *legend3 = new QCPLegend();
-    legend3->setLayer("legend3");
-    AxisRect3->insetLayout()->addElement(legend3,Qt::AlignTop|Qt::AlignRight);
-    legend3->addItem(new QCPPlottableLegendItem(legend3,plot3));
-    legend3->addItem(new QCPPlottableLegendItem(legend3,plot33));
-    legend3->addItem(new QCPPlottableLegendItem(legend3,plot333));
-    legend3->addItem(new QCPPlottableLegendItem(legend3,plot3333));
-    legend3->addItem(new QCPPlottableLegendItem(legend3,plot33333));
-    ui->widget1->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+//    QCPGraph *plot3 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
+//    plot3->setName("CoMY");
+//    plot3->setData(Pelvis.timeVector,Pelvis.CoMYVector);
+//    plot3->keyAxis()->setLabel("time(s)");
+//    plot3->valueAxis()->setLabel("Y trajectory");
+//    // plot1->valueAxis()->setRange(-0.2, 0.2);
+//    //plot3->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::green), 2));
+//    plot3->keyAxis()->setLabel("time(s)");
+//    plot3->valueAxis()->setLabel("Y Trajectory");
+//    plot3->setLineStyle(QCPGraph::lsLine);
+//    plot3->setPen(QPen(QColor("#00ff00"), 2));
+//    plot3->rescaleAxes();
+
+
+
+
+//    QCPGraph *plot33 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
+//    plot33->setData(Pelvis.timeVector,Pelvis.DCMYVector);
+//    plot33->valueAxis()->setRange(-0.2, 0.5);
+//    plot33->setLineStyle(QCPGraph::lsLine);
+//    plot33->rescaleKeyAxis();
+//    //plot33->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::blue), 1.5));
+//    plot33->setName("DCMY");
+//    plot33->setPen(QPen(QColor("blue"), 2));
+//    // ui->widget1->plotLayout()->addElement(3, 0, new QCPTextElement(ui->widget1, "Way too many graphs in one plot", QFont("sans", 12, QFont::Bold)));
+
+
+//    QCPGraph *plot333 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
+//    plot333->setData(Pelvis.timeVector,Pelvis.EndCoPYVector);
+//    plot333->setLineStyle(QCPGraph::lsLine);
+//    plot333->rescaleKeyAxis();
+//    //plot333->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossSquare, QPen(Qt::magenta), 1.5));
+//    plot333->setName("CoPY");
+
+//    //    plot333->setPen(QPen(QColor(120, 120, 120), 2));
+//    plot333->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
+//    plot333->setPen(QPen(QColor("magenta"), 2.5));
+//    // ui->widget1->plotLayout()->addElement(3, 0, new QCPTextElement(ui->widget1, "Way too many graphs in one plot", QFont("sans", 12, QFont::Bold)));
+
+
+
+
+
+//    QCPGraph *plot3333 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
+//    plot3333->setData(Pelvis.timeVector,Pelvis.DCMdsYVector);
+//    // plot222->valueAxis()->setRange(-0.2, 0.2);
+//    QPen blueDotPen3;
+//    blueDotPen3.setColor(QColor("cyan"));
+//    blueDotPen3.setStyle(Qt::DashLine);
+//    blueDotPen3.setWidthF(2);
+//   // customPlot->graph(3)->setPen(blueDotPen);
+//   // plot2222->setLineStyle(QCPGraph::lsLine);
+//    plot3333->rescaleKeyAxis();
+//   // plot2222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
+//    plot3333->setPen(blueDotPen3);
+//    plot3333->setName("DCMds");
+
+//    QCPGraph *plot33333 = ui->widget1->addGraph(AxisRect3->axis(QCPAxis::atBottom), AxisRect3->axis(QCPAxis::atLeft));
+//    plot33333->setData(Pelvis.timeVector,Pelvis.CoMdsYVector);
+//    // plot222->valueAxis()->setRange(-0.2, 0.2);
+//    QPen blueDotPen33;
+//    blueDotPen33.setColor(QColor("green"));
+//    blueDotPen33.setStyle(Qt::DashLine);
+//    blueDotPen33.setWidthF(2);
+//   // customPlot->graph(3)->setPen(blueDotPen);
+//   // plot2222->setLineStyle(QCPGraph::lsLine);
+//    plot33333->rescaleKeyAxis();
+//   // plot2222->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::magenta), QBrush(Qt::red), 2));
+//    plot33333->setPen(blueDotPen33);
+//    plot33333->setName("CoMds");
+
+
+
+//    QCPLegend *legend3 = new QCPLegend();
+//    legend3->setLayer("legend3");
+//    AxisRect3->insetLayout()->addElement(legend3,Qt::AlignTop|Qt::AlignRight);
+//    legend3->addItem(new QCPPlottableLegendItem(legend3,plot3));
+//    legend3->addItem(new QCPPlottableLegendItem(legend3,plot33));
+//    legend3->addItem(new QCPPlottableLegendItem(legend3,plot333));
+//    legend3->addItem(new QCPPlottableLegendItem(legend3,plot3333));
+//    legend3->addItem(new QCPPlottableLegendItem(legend3,plot33333));
+//    ui->widget1->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 }
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.4.2, 2018-12-06T19:09:55. -->
+<!-- Written by QtCreator 3.4.2, 2018-12-11T19:30:27. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -157,8 +157,8 @@
      <value type="int">14</value>
     </valuelist>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">choreonoid</value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments">surena4offline.cnoid</value>
-    <value type="bool" key="CMakeProjectManager.CMakeRunConfiguration.UseTerminal">false</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments">surena4online1.cnoid</value>
+    <value type="bool" key="CMakeProjectManager.CMakeRunConfiguration.UseTerminal">true</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory">/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>

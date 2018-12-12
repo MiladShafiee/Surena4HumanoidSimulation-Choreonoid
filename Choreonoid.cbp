@@ -3225,7 +3225,7 @@
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
-      <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/taskspaceonline.h">
+      <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/taskspaceonline1.h">
          <Option target="SURENA4PDTest"/>
          <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
@@ -3356,7 +3356,7 @@
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
-      <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/taskspaceonline.cpp">
+      <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/taskspaceonline1.cpp">
          <Option target="SURENA4PDTest"/>
          <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>

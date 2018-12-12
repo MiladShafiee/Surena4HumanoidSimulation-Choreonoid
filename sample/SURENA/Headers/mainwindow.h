@@ -6,6 +6,7 @@
 #include <Headers/qcustomplot.h>
 #include"Headers/chartform.h"
 #include "Headers/taskspaceoffline.h"
+#include"Headers/taskspaceonline1.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,7 +34,7 @@ ChartForm  *ChartsfootAccel;
     ~MainWindow();
 QString demoName;
  QCustomPlot *customPlot;
- void Plot(TaskSpace Pelvis);
+ void Plot(TaskSpaceOnline1 Pelvis);
  void milad(QCustomPlot *customPlot);
 private:
     Ui::MainWindow *ui;

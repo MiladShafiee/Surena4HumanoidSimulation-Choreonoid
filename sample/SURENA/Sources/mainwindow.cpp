@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-void MainWindow::Plot(TaskSpace Pelvis){
+void MainWindow::Plot(TaskSpaceOnline1 Pelvis){
 //milad(ui->widget);
 //    Charts=new ChartForm();
 //    Charts->show();
@@ -70,7 +70,7 @@ void MainWindow::Plot(TaskSpace Pelvis){
       // QWidget *parent = 0;
         Chartsalaki=new ChartForm(0,Pelvis);
        Chartsalaki->show();
-       // Chartsalaki->Plotchoreonoidtest(Pelvis,plot2,subLayout1,AxisRect2/*ui->widget*/);
+      //  Chartsalaki->Plotchoreonoidtest(Pelvis,plot2,subLayout1,AxisRect2/*ui->widget*/);
 
 }
 

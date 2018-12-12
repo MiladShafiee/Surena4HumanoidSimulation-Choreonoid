@@ -6,7 +6,7 @@
 #include <QList>
 #include "Headers/Robot.h"
 #include"Headers/TaskSpace.h"
-#include"Headers/taskspaceonline.h"
+#include"Headers/taskspaceonline2.h"
 #include <qmath.h>
 #include <cstring>
 #include <cnoid/BodyLoader>
@@ -61,7 +61,7 @@ class SURENA4Online2 : public SimpleController
 
     BodyPtr ioBody;
     Robot SURENA;
-    TaskSpaceOnline SURENAOnlineTaskSpace1;
+    TaskSpaceOnline2 SURENAOnlineTaskSpace1;
     QList<LinkM> links;
     MatrixXd PoseRoot;
     MatrixXd PoseRFoot;
@@ -350,7 +350,7 @@ Vector6 dFR = ankleRightForce->F();
 //}
 
 
-if (  (dFR(2)>50) &&  ( SURENAOnlineTaskSpace1.StepNumber==1 || SURENAOnlineTaskSpace1.localTiming>2.85)) {
+if (  (dFR(2)>20) &&  ( SURENAOnlineTaskSpace1.StepNumber==1 || SURENAOnlineTaskSpace1.localTiming>2.85)) {
     links=SURENA.GetLinks();
      KRtemp=false;
      RFT=true;
@@ -364,7 +364,7 @@ if (  (dFR(2)>50) &&  ( SURENAOnlineTaskSpace1.StepNumber==1 || SURENAOnlineTask
      //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
      //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
 }
-else if (SURENAOnlineTaskSpace1.localTiming<2.5) {
+else if (SURENAOnlineTaskSpace1.localTiming<2.85) {
      KRtemp=true;
      RFT=false;
 
@@ -375,7 +375,7 @@ else if (SURENAOnlineTaskSpace1.localTiming<2.5) {
 
 
 
-if ((  (dFL(2)>=50)  && SURENAOnlineTaskSpace1.localTiming>2.85 )) {
+if ((  (dFL(2)>=20)  && SURENAOnlineTaskSpace1.localTiming>2.85 )) {
     links=SURENA.GetLinks();
      KLtemp=false;
      LFT=true;
@@ -389,7 +389,7 @@ if ((  (dFL(2)>=50)  && SURENAOnlineTaskSpace1.localTiming>2.85 )) {
      //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
      //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
 }
-else if (SURENAOnlineTaskSpace1.localTiming<2.5) {
+else if (SURENAOnlineTaskSpace1.localTiming<2.85) {
      KLtemp=true;
      LFT=false;
 

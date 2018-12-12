@@ -136,8 +136,8 @@ YOffsetOfAnkletrajectory=0.00;//for compensating the clearance of the hip roll i
     ReferencePelvisHeight=0.86;
     MaxHeightPelvis=MinHeightPelvis+Delta;
     if (true) {
-        Xe=1*Sc*StepLength/(Rse+1);
-        Xs=1.05*Rse*Xe;
+        Xe=1.*Sc*StepLength/(Rse+1);
+        Xs=0.000*Rse*Xe;
         YpMax=1*Rm*0.5*_pelvisLength;
         Yd=1*Rd*YpMax;
         YStMax=1.0*YpMax;

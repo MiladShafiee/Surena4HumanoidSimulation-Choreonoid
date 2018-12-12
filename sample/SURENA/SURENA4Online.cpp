@@ -455,7 +455,7 @@ doplot();
     void doplot(){
   // plot.show();
 
-    plot.Plot(SURENATaskSpace);
+  //  plot.Plot(SURENATaskSpace);
     //return app.exec();
 }
     };
