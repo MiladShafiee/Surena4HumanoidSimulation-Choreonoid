@@ -36,10 +36,10 @@ public:
     bool DoubleSupport;
 
     double currentRightFootZ;
-    double currentRightFootX;
+    double currentRightFootX1;
 
     double currentLeftFootZ;
-    double currentLeftFootX;
+    double currentLeftFootX1;
 
 
     bool HipRollModification;
@@ -247,7 +247,7 @@ double _timeStep;
     MatrixXd GetAccVelPos(MatrixXd Coef, double time, double ti, int PolynomialOrder);
     void CoeffArrayAnkle();
     void CoeffArrayPelvis();
-    MatrixXd PelvisTrajectory(double time, int n, double localtiming);
+    MatrixXd PelvisTrajectory(double time, int n, double localtiming, bool LastDSIndex);
     void CoeffArrayFootAngle();
 };
 

@@ -85,8 +85,8 @@ QCPGraph *plot1 = customPlot->addGraph(AxisRect2->axis(QCPAxis::atBottom), AxisR
     plot1->keyAxis()->setLabel(" X Trajectory");
     plot1->valueAxis()->setLabel("Y Trajectory");
     plot1->setName("CoM");
-    plot1->setData(Pelvis.CoMXVector,Pelvis.timeVector);
-    plot1->valueAxis()->setRange(-0.2, 0.2);
+    plot1->setData(Pelvis.timeVector,Pelvis.CoMXVector);
+   // plot1->valueAxis()->setRange(-0.2, 0.2);
     plot1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::green), QBrush(Qt::green), 1.5));
     plot1->setName("CoM");
     plot1->setLineStyle(QCPGraph::lsLine);
