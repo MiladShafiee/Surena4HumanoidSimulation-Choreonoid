@@ -68,9 +68,43 @@ void MainWindow::Plot(TaskSpaceOnline1 Pelvis){
 
       // subLayout1 = new QCPLayoutGrid;
       // QWidget *parent = 0;
-        Chartsalaki=new ChartForm(0,Pelvis);
-       Chartsalaki->show();
+
+
+
+
+
+
+
+
+
+
+
+//        Chartsalaki=new ChartForm(0,Pelvis);//shoud be uncommented
+//       Chartsalaki->show();//shoud be uncommented
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       //  Chartsalaki->Plotchoreonoidtest(Pelvis,plot2,subLayout1,AxisRect2/*ui->widget*/);
+
+}
+
+
+void MainWindow::Plot2(TaskSpaceOnline2 Pelvis2){
+
+
+        Chartsalaki=new ChartForm(0,Pelvis2);
+       Chartsalaki->show();
 
 }
 

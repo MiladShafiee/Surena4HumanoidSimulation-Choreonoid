@@ -14,6 +14,7 @@
 #include<Headers/taskspaceoffline.h>
 #include <Headers/qcustomplot.h>
 #include"Headers/taskspaceonline1.h"
+#include"Headers/taskspaceonline2.h"
 namespace Ui {
 class ChartForm;
 }
@@ -23,7 +24,7 @@ class ChartForm : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit ChartForm(QWidget *parent, TaskSpaceOnline1 pelvis);
+    explicit ChartForm(QWidget *parent, TaskSpaceOnline2 pelvis);
     ~ChartForm();
 
     void Plot(TaskSpaceOnline1 Pelvis);
@@ -35,7 +36,7 @@ public:
     void PlotFootOffline(TaskSpaceOffline Pelvis);
     void PlotOfflinePelvis(TaskSpaceOffline Pelvis);
     void milad(TaskSpace Pelvis);
-    void Plotchoreonoidtest(QCustomPlot *customPlot, TaskSpaceOnline1 Pelvis);
+    void Plotchoreonoidtest(QCustomPlot *customPlot, TaskSpaceOnline2 Pelvis);
 private:
     Ui::ChartForm *ui;
     QCustomPlot *figure1;

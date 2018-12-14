@@ -53,7 +53,7 @@ items:
               data: 
                 isNoDelayMode: true
                 controllerOptions: ""
-                controller: "SURENA4Online1.so"
+                controller: "SURENA4Online2.so"
                 baseDirectory: "Controller directory"
                 reloading: true
             - 
@@ -135,9 +135,9 @@ items:
         jointPositions: [  ]
         initialRootPosition: [ 23, 0, 8 ]
         initialRootAttitude: [ 
-          0.000796325359, 0, 0.999999683, 
+          0.000796325225, 0, 0.999999683, 
           0, 1, 0, 
-          -0.999999683, 0, 0.000796325359 ]
+          -0.999999683, 0, 0.000796325225 ]
         zmp: [ 0, 0, 0 ]
         collisionDetection: true
         selfCollisionDetection: false
@@ -159,8 +159,8 @@ items:
         initialRootPosition: [ 10, 8, 8 ]
         initialRootAttitude: [ 
           1, -0, 0, 
-          0, 0.000796325359, 0.999999683, 
-          -0, -0.999999683, 0.000796325359 ]
+          0, 0.000796325225, 0.999999683, 
+          -0, -0.999999683, 0.000796325225 ]
         zmp: [ 0, 0, 0 ]
         collisionDetection: true
         selfCollisionDetection: false
@@ -181,9 +181,9 @@ items:
         jointPositions: [  ]
         initialRootPosition: [ -3, 0, 8 ]
         initialRootAttitude: [ 
-          0.000796325359, 0, 0.999999683, 
+          0.000796325225, 0, 0.999999683, 
           0, 1, 0, 
-          -0.999999683, 0, 0.000796325359 ]
+          -0.999999683, 0, 0.000796325225 ]
         zmp: [ 0, 0, 0 ]
         collisionDetection: true
         selfCollisionDetection: false
@@ -200,7 +200,7 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 2 ]
+      selected: [ 3 ]
       checked: [ 1, 2, 3, 4, [ 4, "ForceSensor" ], 5, 6, 7, 8, 9 ]
       expanded: [ 1, 2, 3, 5, 6 ]
   - 
@@ -320,28 +320,6 @@ views:
     class: PythonConsoleView
     mounted: true
 toolbars: 
-  "TimeBar": 
-    minTime: 0
-    maxTime: 134.874
-    frameRate: 500
-    playbackFrameRate: 50
-    idleLoopDrivenMode: false
-    currentTime: 0
-    speedScale: 1
-    syncToOngoingUpdates: true
-    autoExpansion: true
-  "KinematicsBar": 
-    mode: AUTO
-    enablePositionDragger: true
-    penetrationBlock: false
-    collisionLinkHighlight: false
-    snapDistance: 0.025
-    penetrationBlockDepth: 0.0005
-    lazyCollisionDetectionMode: true
-  "BodyBar": 
-    current: 2
-  "LeggedBodyBar": 
-    stanceWidth: 0.15
   "BodyMotionGenerationBar": 
     autoGenerationForNewBody: true
     balancer: false
@@ -375,6 +353,28 @@ toolbars:
     waistHeightRelaxation: false
     gravity: 9.8
     dynamicsTimeRatio: 1
+  "TimeBar": 
+    minTime: 0
+    maxTime: 134.874
+    frameRate: 500
+    playbackFrameRate: 50
+    idleLoopDrivenMode: false
+    currentTime: 0
+    speedScale: 1
+    syncToOngoingUpdates: true
+    autoExpansion: true
+  "KinematicsBar": 
+    mode: AUTO
+    enablePositionDragger: true
+    penetrationBlock: false
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "BodyBar": 
+    current: 2
+  "LeggedBodyBar": 
+    stanceWidth: 0.15
 Body: 
   "BodyMotionEngine": 
     updateJointVelocities: false
@@ -422,12 +422,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 130, 632 ]
+      sizes: [ 431, 1098 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 387, 385 ]
+          sizes: [ 401, 399 ]
           children: 
             - 
               type: pane
@@ -440,12 +440,12 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 463, 309 ]
+          sizes: [ 480, 320 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 0, 626 ]
+              sizes: [ 0, 1092 ]
               children: 
                 - 
                   type: pane

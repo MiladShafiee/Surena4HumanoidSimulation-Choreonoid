@@ -1,7 +1,7 @@
 #include "Headers/chartform.h"
 #include "ui_chartform.h"
 
-ChartForm::ChartForm(QWidget *parent, TaskSpaceOnline1 pelvis):
+ChartForm::ChartForm(QWidget *parent, TaskSpaceOnline2 pelvis):
 QMainWindow(parent),
 ui(new Ui::ChartForm)
 {
@@ -17,7 +17,7 @@ ChartForm::~ChartForm()
 
 
 
-void ChartForm::Plotchoreonoidtest(QCustomPlot *customPlot,TaskSpaceOnline1 Pelvis){
+void ChartForm::Plotchoreonoidtest(QCustomPlot *customPlot, TaskSpaceOnline2 Pelvis){
 
 customPlot->plotLayout()->clear();
 

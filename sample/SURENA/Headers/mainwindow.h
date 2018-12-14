@@ -7,6 +7,7 @@
 #include"Headers/chartform.h"
 #include "Headers/taskspaceoffline.h"
 #include"Headers/taskspaceonline1.h"
+#include"Headers/taskspaceonline2.h"
 
 namespace Ui {
 class MainWindow;
@@ -36,6 +37,7 @@ QString demoName;
  QCustomPlot *customPlot;
  void Plot(TaskSpaceOnline1 Pelvis);
  void milad(QCustomPlot *customPlot);
+ void Plot2(TaskSpaceOnline2 Pelvis2);
 private:
     Ui::MainWindow *ui;
 };
