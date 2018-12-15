@@ -54,7 +54,7 @@ bool LeftFootLanded;
 bool RightFootLanded;
 bool FullContactDetected;
 
-    MainWindow miladplot2;
+MainWindow miladplot2;
 class SURENA4Online2 : public SimpleController
 {
 
@@ -72,13 +72,13 @@ class SURENA4Online2 : public SimpleController
     vector<double> qold;
     double footPitchOld;
     double footRollOld;
-      //  milad();
+    //  milad();
 
     double dt;
     SimpleControllerIO* tempIO;
 public:
- QList<LinkM> links;
-  bool indexLastDS=true;
+    QList<LinkM> links;
+    bool indexLastDS=true;
 
 
     double StartTime=0;
@@ -88,7 +88,7 @@ public:
     double DurationOfendPhase=6;
     double DurationOfPDTest=30;
     double hipRoll=0;
-//SURENAOnlineTaskSpace1.n
+    //SURENAOnlineTaskSpace1.n
 
 
     BodyLoader bodyloader;
@@ -107,10 +107,10 @@ public:
 
     virtual bool initialize(SimpleControllerIO* io) override
     {
- KRtemp=false;
- KLtemp=false;
- RFT=false;
- LFT=false;
+        KRtemp=false;
+        KLtemp=false;
+        RFT=false;
+        LFT=false;
 
         aState=false;
         bState=false;
@@ -120,17 +120,17 @@ public:
         RightFootLanded=false;
         FullContactDetected=false;
 
-links=SURENA.GetLinks();
+        links=SURENA.GetLinks();
 
         ioBody = io->body();
 
         //            cout << "dof: " <<ioBody->numJoints() << endl;
         //            cout << "base link name: " << ioBody->rootLink()->name() << endl;
         //            cout << "base link pos: \n" << ioBody->rootLink()->p() << endl;
-//        cout << "base link rot: \n" << ioBody->rootLink()->R() << endl;
+        //        cout << "base link rot: \n" << ioBody->rootLink()->R() << endl;
 
-//        dt = io->timeStep();
-//        tempIO=io;
+        //        dt = io->timeStep();
+        //        tempIO=io;
 
 
         ankleRightForce = ioBody->findDevice<ForceSensor>("RightAnkleForceSensor");
@@ -266,14 +266,14 @@ links=SURENA.GetLinks();
 
             PoseRFoot<<0,
                     -0.11500,
-                    0.112000,
+                    SURENAOnlineTaskSpace1.currentRightFootZ,
                     0,
                     0,
                     0;
 
             PoseLFoot<<0,
                     0.11500,
-                    0.11200,
+                    SURENAOnlineTaskSpace1.currentLeftFootZ,
                     0,
                     0,
                     0;
@@ -283,13 +283,11 @@ links=SURENA.GetLinks();
         }
 
 
-int NumberOfTimeStep=(SURENAOnlineTaskSpace1.Tc/SURENAOnlineTaskSpace1._timeStep)+1;
-int NumberOfTimeStepDS=(SURENAOnlineTaskSpace1.TDs/SURENAOnlineTaskSpace1._timeStep)+1;
-int NumberOfTimeStepEnd=(SURENAOnlineTaskSpace1.TEnd/SURENAOnlineTaskSpace1._timeStep)+1;
+        int NumberOfTimeStep=(SURENAOnlineTaskSpace1.Tc/SURENAOnlineTaskSpace1._timeStep)+1;
 
-           //---------------------------------------------------------------------------------//
-          //--------------------------------main cycle of walking----------------------------//
-         //---------------------------------------------------------------------------------//
+        //---------------------------------------------------------------------------------//
+        //--------------------------------main cycle of walking----------------------------//
+        //---------------------------------------------------------------------------------//
         if (StartTime>DurationOfStartPhase && StartTime<(DurationOfStartPhase+SURENAOnlineTaskSpace1.MotionTime)){
 
 
@@ -313,17 +311,13 @@ int NumberOfTimeStepEnd=(SURENAOnlineTaskSpace1.TEnd/SURENAOnlineTaskSpace1._tim
                     SURENAOnlineTaskSpace1.localTiming=0.0020000000000;//0.001999999999000000;
                     SURENAOnlineTaskSpace1.localtimingInteger=1;
                     SURENAOnlineTaskSpace1.StepNumber=SURENAOnlineTaskSpace1.StepNumber+1;
-                            KLtemp=false;
-
+                    KLtemp=false;
                 }
 
 
 
                 else if ((SURENAOnlineTaskSpace1.localtimingInteger>=NumberOfTimeStep) &&   (SURENAOnlineTaskSpace1.StepNumber>1    &&   SURENAOnlineTaskSpace1.StepNumber<(SURENAOnlineTaskSpace1.NStep+2))) {
-
-
                     SURENAOnlineTaskSpace1.StepNumber=SURENAOnlineTaskSpace1.StepNumber+1;
-
                     if (SURENAOnlineTaskSpace1.StepNumber==SURENAOnlineTaskSpace1.NStep+2) {
                         SURENAOnlineTaskSpace1.localTiming=0.0020000000000;
                         SURENAOnlineTaskSpace1.localtimingInteger=1;
@@ -333,33 +327,85 @@ int NumberOfTimeStepEnd=(SURENAOnlineTaskSpace1.TEnd/SURENAOnlineTaskSpace1._tim
                         SURENAOnlineTaskSpace1.localTiming=0.0020000000000;//0.00199999999;
                     }
 
-                  cout<<"cooontaaaaaactttt deeeeeteeeecteeeeddddddd="<<SURENAOnlineTaskSpace1.localTiming<<" step number= "<<SURENAOnlineTaskSpace1.StepNumber<<endl;
-                     //  cout<<"Number= "<<NumberOfTimeStep<<endl;
+                    cout<<"cooontaaaaaactttt deeeeeteeeecteeeeddddddd="<<SURENAOnlineTaskSpace1.localTiming<<" step number= "<<SURENAOnlineTaskSpace1.StepNumber<<endl;
+                    //  cout<<"Number= "<<NumberOfTimeStep<<endl;
 
 
-                       if ((SURENAOnlineTaskSpace1.StepNumber%2)==0) {
-                          KLtemp=false;
-
-                       }
-                       else {
-                          KRtemp=false;
-
-                       }
+                    if ((SURENAOnlineTaskSpace1.StepNumber%2)==0) {
+                        KLtemp=false;
+                    }
+                    else {
+                        KRtemp=false;
+                    }
                 }
-                else if (indexLastDS==true && SURENAOnlineTaskSpace1.localtimingInteger>=NumberOfTimeStepDS && SURENAOnlineTaskSpace1.StepNumber==SURENAOnlineTaskSpace1.NStep+2) {
+                else if (indexLastDS==true && SURENAOnlineTaskSpace1.localTiming>=SURENAOnlineTaskSpace1.TDs && SURENAOnlineTaskSpace1.StepNumber==SURENAOnlineTaskSpace1.NStep+2) {
                     SURENAOnlineTaskSpace1.localTiming=0.00200000000000;
                     SURENAOnlineTaskSpace1.localtimingInteger=1;
                     indexLastDS=false;
                     KLtemp=false;
                 }
 
-                else if (indexLastDS==false && SURENAOnlineTaskSpace1.localtimingInteger>(NumberOfTimeStepEnd)) {
-                    KRtemp=false;
-                    cout<<SURENAOnlineTaskSpace1.localTiming<<endl;
-                    SURENAOnlineTaskSpace1.localTiming=0.00200000000000;
-                    SURENAOnlineTaskSpace1.localtimingInteger=1;
+                else if (indexLastDS==false && SURENAOnlineTaskSpace1.localTiming>( 0.5*SURENAOnlineTaskSpace1.TEnd)) {
+                   KRtemp=false;
+
+                   // SURENAOnlineTaskSpace1.localTiming=0.00200000000000;
+                   // SURENAOnlineTaskSpace1.localtimingInteger=1;
+                   // cout<<"heyyyy toooooooooooooooooooooooooooooooooooooooooooo"<<endl<<flush;
                 }
                 //                links=SURENA.GetLinks();
+
+
+                if (KLtemp==false) {
+                    KLtemp=true;
+
+                    SURENAOnlineTaskSpace1.currentLeftFootX2=links[12].PositionInWorldCoordinate(0);
+                    SURENAOnlineTaskSpace1.currentLeftFootZ=links[12].PositionInWorldCoordinate(2);
+                }
+
+
+
+                if (KRtemp==false) {
+                    KRtemp=true;
+
+                    SURENAOnlineTaskSpace1.currentRightFootX2=links[6].PositionInWorldCoordinate(0);
+                    SURENAOnlineTaskSpace1.currentRightFootZ=links[6].PositionInWorldCoordinate(2);
+                }
+
+                Vector6 dFL = ankleLeftForce->F();
+                Vector6 dFR = ankleRightForce->F();
+
+
+                if (  (dFR(2)>20) &&  ( SURENAOnlineTaskSpace1.StepNumber==1 || SURENAOnlineTaskSpace1.localTiming>2.85  /*|| SURENAOnlineTaskSpace1.StepNumber==(SURENAOnlineTaskSpace1.NStep+2)*/)) {
+
+                    KRtemp=false;
+                    RFT=true;
+                    if (SURENAOnlineTaskSpace1.StepNumber==(SURENAOnlineTaskSpace1.NStep+2)) {
+//                         cout<<"heyyyy toooooooooooooooooooooo "<< SURENAOnlineTaskSpace1.localTiming<<endl<<flush;
+//                         cout<<SURENAOnlineTaskSpace1.currentRightFootX2<<endl<<flush;
+//                         cout<<(2*SURENAOnlineTaskSpace1.NStride+1)*SURENAOnlineTaskSpace1.StepLength<<endl<<flush;
+                    }
+                    //  cout<<"heyyyy toooooooooooooooooooooooooooooooooooooooooooo"<<endl<<flush;
+                }
+                else if (SURENAOnlineTaskSpace1.localTiming<2.85) {
+
+                    KRtemp=true;
+                    RFT=false;
+                }
+//cout<<
+
+
+
+                if ((  (dFL(2)>=20)  && SURENAOnlineTaskSpace1.localTiming>2.85 )) {
+                    //  links=SURENA.GetLinks();
+                    KLtemp=false;
+                    LFT=true;
+                }
+                else if (SURENAOnlineTaskSpace1.localTiming<2.85) {
+                    links=SURENA.GetLinks();
+                    KLtemp=true;
+                    LFT=false;
+                }
+
 
 
                 if (KLtemp==false) {
@@ -370,133 +416,22 @@ int NumberOfTimeStepEnd=(SURENAOnlineTaskSpace1.TEnd/SURENAOnlineTaskSpace1._tim
 
 
 
-
                 if (KRtemp==false) {
+
+
                     KRtemp=true;
                     SURENAOnlineTaskSpace1.currentRightFootX2=links[6].PositionInWorldCoordinate(0);
                     SURENAOnlineTaskSpace1.currentRightFootZ=links[6].PositionInWorldCoordinate(2);
-                }
-
-
-//links=SURENA.GetLinks();
-
-Vector6 dFL = ankleLeftForce->F();
-Vector6 dFR = ankleRightForce->F();
-//if (dFL(2)>=200) {
-//     KLtemp=false;
-//}
-//else {
-//     KLtemp=true;
-//}
-
-
-if (  (dFR(2)>20) &&  ( SURENAOnlineTaskSpace1.StepNumber==1 || SURENAOnlineTaskSpace1.localTiming>2.85)) {
-    links=SURENA.GetLinks();
-     KRtemp=false;
-     RFT=true;
-     //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
-     //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
-//     SURENAOnlineTaskSpace1.currentRightFootX2=links[6].PositionInWorldCoordinate(0);
-//       cout<<"Right foot X ="<<SURENAOnlineTaskSpace1.currentRightFootX2<<endl;
-
-//       SURENAOnlineTaskSpace1.currentRightFootZ=links[6].PositionInWorldCoordinate(2);
-//         cout<<"Right foot Z ="<<SURENAOnlineTaskSpace1.currentRightFootZ<<endl;
-     //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
-     //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
-}
-else if (SURENAOnlineTaskSpace1.localTiming<2.85) {
-     KRtemp=true;
-     RFT=false;
-
-     //cout<<"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"<<endl;
-     //cout<<"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"<<endl;
-}
-
-
-
-
-if ((  (dFL(2)>=20)  && SURENAOnlineTaskSpace1.localTiming>2.85 )) {
-    links=SURENA.GetLinks();
-     KLtemp=false;
-     LFT=true;
-     //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
-     //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
-//     SURENAOnlineTaskSpace1.currentRightFootX2=links[6].PositionInWorldCoordinate(0);
-//       cout<<"Right foot X ="<<SURENAOnlineTaskSpace1.currentRightFootX2<<endl;
-
-//       SURENAOnlineTaskSpace1.currentRightFootZ=links[6].PositionInWorldCoordinate(2);
-//         cout<<"Right foot Z ="<<SURENAOnlineTaskSpace1.currentRightFootZ<<endl;
-     //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
-     //cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"<<endl;
-}
-else if (SURENAOnlineTaskSpace1.localTiming<2.85) {
-     KLtemp=true;
-     LFT=false;
-
-     //cout<<"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"<<endl;
-     //cout<<"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"<<endl;
-}
-
-                if (true/* dFL(2)>=200*/) {
-
-                    SURENAOnlineTaskSpace1.LeftSupport=true;
-
-                    if (KLtemp==false) {
-                        KLtemp=true;
-                        // cout<<"Left foot contact is detected, ZForce ="<<dFL(2)<<endl;
-
-                        SURENAOnlineTaskSpace1.currentLeftFootX2=links[12].PositionInWorldCoordinate(0);
-                        SURENAOnlineTaskSpace1.currentLeftFootZ=links[12].PositionInWorldCoordinate(2);
-
-                               // cout<<"Left foot X ="<<SURENAOnlineTaskSpace1.currentLeftFootX22<<endl;
-       //                         cout<<"Left foot Z ="<<SURENAOnlineTaskSpace1.currentLeftFootZ<<endl;
-
-       //                         cout<<"Right foot X ="<<SURENAOnlineTaskSpace1.currentRightFootX2<<endl;
-       //                         cout<<"Right foot Z ="<<SURENAOnlineTaskSpace1.currentRightFootZ<<endl;
-                    }
-
-                }
-                else  {
-                    SURENAOnlineTaskSpace1.LeftSupport=false;
-                     SURENAOnlineTaskSpace1.DoubleSupport=false;
 
                 }
 
-
-                 if (true/*dFR(2)>=200*/) {
-
-                     SURENAOnlineTaskSpace1.RightSupport=true;
+//cout<<"heyyyy toooooooooooooooooooooooooooooooooooooooooooo "<<links[6].PositionInWorldCoordinate(0)<<endl<<flush;
 
 
-                     if (KRtemp==false) {
-                         KRtemp=true;
-                        // cout<<"Right foot contact is detected, ZForce ="<<dFR(2)<<endl;
-                         SURENAOnlineTaskSpace1.currentRightFootX2=links[6].PositionInWorldCoordinate(0);
-                         SURENAOnlineTaskSpace1.currentRightFootZ=links[6].PositionInWorldCoordinate(2);
+                //                 if ((dFR(2)>=250) && (dFL(2)>=250)) {
+                //                     SURENAOnlineTaskSpace1.DoubleSupport=true;
 
-
-
-                //         cout<<"Left foot X ="<<SURENAOnlineTaskSpace1.currentLeftFootX22<<endl;
-                //         cout<<"Left foot Z ="<<SURENAOnlineTaskSpace1.currentLeftFootZ<<endl;
-                   //      cout<<"Right foot X ="<<SURENAOnlineTaskSpace1.currentRightFootX2<<endl;
-                //         cout<<"Right foot Z ="<<SURENAOnlineTaskSpace1.currentRightFootZ<<endl;
-                     }
-
-                 }
-                 else{
-                      SURENAOnlineTaskSpace1.RightSupport=false;
-                      SURENAOnlineTaskSpace1.DoubleSupport=false;
-                 }
-
-
-
-
-
-
-                 if ((dFR(2)>=250) && (dFL(2)>=250)) {
-                     SURENAOnlineTaskSpace1.DoubleSupport=true;
-
-                 }
+                //                 }
 
 
 
@@ -517,7 +452,7 @@ else if (SURENAOnlineTaskSpace1.localTiming<2.85) {
                 SURENAOnlineTaskSpace1.globalTime=SURENAOnlineTaskSpace1.globalTime+SURENAOnlineTaskSpace1._timeStep;
                 SURENAOnlineTaskSpace1.localTiming=SURENAOnlineTaskSpace1.localTiming+SURENAOnlineTaskSpace1._timeStep;
 
- SURENAOnlineTaskSpace1.localtimingInteger= SURENAOnlineTaskSpace1.localtimingInteger+1;
+                SURENAOnlineTaskSpace1.localtimingInteger= SURENAOnlineTaskSpace1.localtimingInteger+1;
                 if (round(SURENAOnlineTaskSpace1.globalTime)<=round(SURENAOnlineTaskSpace1.MotionTime)){
 
 
@@ -574,8 +509,8 @@ else if (SURENAOnlineTaskSpace1.localTiming<2.85) {
         if (SURENAOnlineTaskSpace1.globalTime>(SURENAOnlineTaskSpace1.MotionTime-2*SURENAOnlineTaskSpace1._timeStep) && SURENAOnlineTaskSpace1.globalTime<(SURENAOnlineTaskSpace1.MotionTime-SURENAOnlineTaskSpace1._timeStep)){
             doplot2();
         }
-// doplot2();
- cout<<"mlllllsssss"<<endl<<flush;
+        // doplot2();
+       // cout<<"mlllllsssss"<<endl<<flush;
         for(int i=0; i < ioBody->numJoints(); ++i){
             Link* joint = ioBody->joint(i);
             double u;

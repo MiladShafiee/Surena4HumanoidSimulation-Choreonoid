@@ -42,8 +42,8 @@ void TaskSpaceOnline2::SetParameters(){
     _pelvisLength=0.23;
     ReferencePelvisHeight=0.86;
 
-    NStride=5;
-    NStep=10;
+    NStride=30;
+    NStep=60;
     DesiredVelocity=0.20000;
     StepLength=0.170000;
     StepNumber=1;
@@ -840,13 +840,13 @@ n=n-1;
                 x_al=currentLeftFootX2;//;
 
                 if (abs((n)*StepLength-currentLeftFootX2)>0.0001) {
-                    cout<<(n)*StepLength<<endl;
-                    cout<<"tt="<<localtiming<<endl;
-                    cout<<"warning!!! current left= "<<currentLeftFootX2<<endl;
+//                    cout<<(n)*StepLength<<endl;
+//                    cout<<"tt="<<localtiming<<endl;
+//                    cout<<"warning!!! current left= "<<currentLeftFootX2<<endl;
                 }
                 if (abs((n-1)*StepLength-currentRightFootX2)>0.0001) {
-                    cout<<(n-1)*StepLength<<endl;
-                    cout<<"warning!!! current right= "<<currentRightFootX2<<endl;
+//                    cout<<(n-1)*StepLength<<endl;
+//                    cout<<"warning!!! current right= "<<currentRightFootX2<<endl;
                 }
 
 
@@ -911,9 +911,9 @@ n=n-1;
                     x_al=currentLeftFootX2;
                    // LeftSupport=true;
 //                }
-                    if (time>37.19  && time<37.25) {
-                                  cout<<x_ar<<" timing= "<<time<<endl<<flush;
-                }
+//                    if (time>37.19  && time<37.25) {
+//                                  cout<<x_ar<<" timing= "<<time<<endl<<flush;
+//                }
 
             }
 
@@ -942,21 +942,21 @@ n=n-1;
                 }
 
 
-                if (time>37.2  && time<37.25) {
-                              cout<<x_ar<<" timing= "<<time<<endl<<flush;
-            }
-
+//                if (time>37.2  && time<37.25) {
+//                              cout<<x_ar<<" timing= "<<time<<endl<<flush;
+//            }
+ // cout<<currentRightFootX2<<endl<<flush;
 
             }
             else{
 
             //     cout<<"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj= "<<currentLeftFootX2<<endl;
 
-                x_ar=(2*NStride+1)*StepLength;
-                z_ar=_lenghtOfAnkle;
+                x_ar=currentRightFootX2;//(2*NStride+1)*StepLength;
+                z_ar=currentRightFootZ;//_lenghtOfAnkle;
 
-                x_al=(2*NStride+1)*StepLength;
-                z_al=_lenghtOfAnkle;
+                x_al=currentLeftFootX2;//(2*NStride+1)*StepLength;
+                z_al=currentLeftFootZ;//_lenghtOfAnkle;
             }
         }
        // double tt=time-(MotionTime-TEnd);
