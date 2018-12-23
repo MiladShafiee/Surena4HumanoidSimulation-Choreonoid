@@ -1,5 +1,5 @@
-#ifndef TASKSPACEONLINE2_H
-#define TASKSPACEONLINE2_H
+#ifndef TASKSPACEONLINE3_H
+#define TASKSPACEONLINE3_H
 #include "Eigen/Dense"
 #include <qdebug.h>
 #include <qmath.h>
@@ -17,7 +17,7 @@
 #include "MinimumJerkInterpolation.h"
 using namespace std;
 using namespace Eigen;
-class TaskSpaceOnline2
+class TaskSpaceOnline3
 {  MinimumJerkInterpolation CoefOffline;
     double _lengthOfThigh;
     double _lengthOfShank;
@@ -28,7 +28,7 @@ class TaskSpaceOnline2
     double _toeLength;
 
 public:
-    TaskSpaceOnline2();
+    TaskSpaceOnline3();
     bool toeOff;
     bool LeftSupport;
     bool RightSupport;
@@ -36,11 +36,9 @@ public:
 
     double currentRightFootZ;
     double currentRightFootX2;
-    double currentRightFootY2;
 
     double currentLeftFootZ;
     double currentLeftFootX2;
-    double currentLeftFootY2;
 
 
     bool HipRollModification;
@@ -252,4 +250,4 @@ double _timeStep;
     void CoeffArrayFootAngle();
 };
 
-#endif // TASKSPACEONLINE_H
+#endif // TASKSPACEONLINE3_H

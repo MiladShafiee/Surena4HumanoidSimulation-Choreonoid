@@ -28,6 +28,7 @@ set(sources
   Sources/taskspaceoffline.cpp
   Sources/taskspaceonline1.cpp
   Sources/taskspaceonline2.cpp
+  Sources/taskspaceonline3.cpp
   Sources/qcustomplot.cpp
   Sources/taskspaceofflineRamp.cpp
 )
@@ -44,6 +45,7 @@ set(headers
   Headers/taskspaceoffline.h
   Headers/taskspaceonline1.h
   Headers/taskspaceonline2.h
+  Headers/taskspaceonline3.h
   Headers/qcustomplot.h
   Headers/taskspaceofflineRamp.h
 )
@@ -85,6 +87,9 @@ configure_file(surena4pushrecovery.cnoid ${CNOID_SOURCE_SHARE_DIR}/project COPYO
 
 add_cnoid_simple_controller(SURENA4Online2 SURENA4Online2.cpp ${sources} ${headers})
 configure_file(surena4online2.cnoid ${CNOID_SOURCE_SHARE_DIR}/project COPYONLY)
+
+add_cnoid_simple_controller(SURENA4Online3 SURENA4Online3.cpp ${sources} ${headers})
+configure_file(surena4online3.cnoid ${CNOID_SOURCE_SHARE_DIR}/project COPYONLY)
 
 include_directories (${PROJECT_SOURCE_DIR}/Headers)
 
@@ -135,6 +140,10 @@ if(QT5)
     qt5_use_modules(SURENA4Online2 Core  Widgets  PrintSupport )
   endif()
 
+
+if(QT5)
+    qt5_use_modules(SURENA4Online3 Core  Widgets  PrintSupport )
+  endif()
 
 endif()
 

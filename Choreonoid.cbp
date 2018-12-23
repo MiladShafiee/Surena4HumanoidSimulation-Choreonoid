@@ -1633,80 +1633,6 @@
             <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="SURENA4Offline">
-         <Option output="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/lib/choreonoid-1.6/simplecontroller/SURENA4Offline.so" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
-         <Option object_output="./" />
-         <Option type="3" />
-         <Option compiler="gcc" />
-         <Compiler>
-            <Add option="-DQT_CORE_LIB" />
-            <Add option="-DQT_WIDGETS_LIB" />
-            <Add option="-DQT_GUI_LIB" />
-            <Add option="-DQT_PRINTSUPPORT_LIB" />
-            <Add option="-DBOOST_DISABLE_ASSERTS" />
-            <Add option="-DEIGEN_NO_DEBUG" />
-            <Add option="-DQT_NO_KEYWORDS" />
-            <Add option="-DQT_NO_OPENGL_ES_2" />
-            <Add option="-DQT_NO_DEBUG" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/Headers" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/include" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/thirdparty/pybind11/include" />
-            <Add directory="/usr/include/eigen3" />
-            <Add directory="/usr/include/python3.5m" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
-            <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
-         </Compiler>
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Offline" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="SURENA4Offline/fast">
-         <Option output="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/lib/choreonoid-1.6/simplecontroller/SURENA4Offline.so" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
-         <Option object_output="./" />
-         <Option type="3" />
-         <Option compiler="gcc" />
-         <Compiler>
-            <Add option="-DQT_CORE_LIB" />
-            <Add option="-DQT_WIDGETS_LIB" />
-            <Add option="-DQT_GUI_LIB" />
-            <Add option="-DQT_PRINTSUPPORT_LIB" />
-            <Add option="-DBOOST_DISABLE_ASSERTS" />
-            <Add option="-DEIGEN_NO_DEBUG" />
-            <Add option="-DQT_NO_KEYWORDS" />
-            <Add option="-DQT_NO_OPENGL_ES_2" />
-            <Add option="-DQT_NO_DEBUG" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/Headers" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/include" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
-            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/thirdparty/pybind11/include" />
-            <Add directory="/usr/include/eigen3" />
-            <Add directory="/usr/include/python3.5m" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport" />
-            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
-            <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
-         </Compiler>
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Offline/fast" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
       <Target title="SURENA4OfflineRamp">
          <Option output="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/lib/choreonoid-1.6/simplecontroller/SURENA4OfflineRamp.so" prefix_auto="0" extension_auto="0" />
          <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
@@ -2003,6 +1929,154 @@
             <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
+      <Target title="SURENA4Offline">
+         <Option output="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/lib/choreonoid-1.6/simplecontroller/SURENA4Offline.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DQT_CORE_LIB" />
+            <Add option="-DQT_WIDGETS_LIB" />
+            <Add option="-DQT_GUI_LIB" />
+            <Add option="-DQT_PRINTSUPPORT_LIB" />
+            <Add option="-DBOOST_DISABLE_ASSERTS" />
+            <Add option="-DEIGEN_NO_DEBUG" />
+            <Add option="-DQT_NO_KEYWORDS" />
+            <Add option="-DQT_NO_OPENGL_ES_2" />
+            <Add option="-DQT_NO_DEBUG" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/Headers" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/include" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/thirdparty/pybind11/include" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/python3.5m" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
+            <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Offline" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="SURENA4Offline/fast">
+         <Option output="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/lib/choreonoid-1.6/simplecontroller/SURENA4Offline.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DQT_CORE_LIB" />
+            <Add option="-DQT_WIDGETS_LIB" />
+            <Add option="-DQT_GUI_LIB" />
+            <Add option="-DQT_PRINTSUPPORT_LIB" />
+            <Add option="-DBOOST_DISABLE_ASSERTS" />
+            <Add option="-DEIGEN_NO_DEBUG" />
+            <Add option="-DQT_NO_KEYWORDS" />
+            <Add option="-DQT_NO_OPENGL_ES_2" />
+            <Add option="-DQT_NO_DEBUG" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/Headers" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/include" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/thirdparty/pybind11/include" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/python3.5m" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
+            <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Offline/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="SURENA4Online3">
+         <Option output="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/lib/choreonoid-1.6/simplecontroller/SURENA4Online3.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DQT_CORE_LIB" />
+            <Add option="-DQT_WIDGETS_LIB" />
+            <Add option="-DQT_GUI_LIB" />
+            <Add option="-DQT_PRINTSUPPORT_LIB" />
+            <Add option="-DBOOST_DISABLE_ASSERTS" />
+            <Add option="-DEIGEN_NO_DEBUG" />
+            <Add option="-DQT_NO_KEYWORDS" />
+            <Add option="-DQT_NO_OPENGL_ES_2" />
+            <Add option="-DQT_NO_DEBUG" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/Headers" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/include" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/thirdparty/pybind11/include" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/python3.5m" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
+            <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Online3" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="SURENA4Online3/fast">
+         <Option output="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/lib/choreonoid-1.6/simplecontroller/SURENA4Online3.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DQT_CORE_LIB" />
+            <Add option="-DQT_WIDGETS_LIB" />
+            <Add option="-DQT_GUI_LIB" />
+            <Add option="-DQT_PRINTSUPPORT_LIB" />
+            <Add option="-DBOOST_DISABLE_ASSERTS" />
+            <Add option="-DEIGEN_NO_DEBUG" />
+            <Add option="-DQT_NO_KEYWORDS" />
+            <Add option="-DQT_NO_OPENGL_ES_2" />
+            <Add option="-DQT_NO_DEBUG" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/Headers" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/include" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+            <Add directory="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/thirdparty/pybind11/include" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/python3.5m" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
+            <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Online3/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
       <Target title="SURENA4Online1">
          <Option output="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/lib/choreonoid-1.6/simplecontroller/SURENA4Online1.so" prefix_auto="0" extension_auto="0" />
          <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
@@ -2173,16 +2247,6 @@
             <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="SURENA4Offline_automoc">
-         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
-         <Option type="4" />
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Offline_automoc" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
       <Target title="SURENA4OfflineRamp_automoc">
          <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
          <Option type="4" />
@@ -2218,6 +2282,26 @@
          <Option type="4" />
          <MakeCommands>
             <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Online2_automoc" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="SURENA4Offline_automoc">
+         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Offline_automoc" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="SURENA4Online3_automoc">
+         <Option working_dir="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 SURENA4Online3_automoc" />
             <CompileFile command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
             <Clean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
             <DistClean command="/usr/bin/make -f &quot;/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Makefile&quot;  VERBOSE=1 clean" />
@@ -3137,111 +3221,133 @@
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/LinkM.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/MinimumJerkInterpolation.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/Robot.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/TaskSpace.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/chartform.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/mainwindow.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/qcustomplot.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/taskspaceoffline.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/taskspaceofflineRamp.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/taskspaceonline1.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/taskspaceonline2.h">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
+         <Option target="SURENA4Online1"/>
+         <Option target="choreonoidsurena"/>
+      </Unit>
+      <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Headers/taskspaceonline3.h">
+         <Option target="SURENA4PDTest"/>
+         <Option target="SURENA4OfflineRamp"/>
+         <Option target="SURENA4PushRecovery"/>
+         <Option target="SURENA4Online"/>
+         <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
@@ -3260,6 +3366,9 @@
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/SURENA4Online2.cpp">
          <Option target="SURENA4Online2"/>
       </Unit>
+      <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/SURENA4Online3.cpp">
+         <Option target="SURENA4Online3"/>
+      </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/SURENA4PDTest.cpp">
          <Option target="SURENA4PDTest"/>
       </Unit>
@@ -3268,111 +3377,133 @@
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/LinkM.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/MinimumJerkInterpolation.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/Robot.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/TaskSpace.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/chartform.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/mainwindow.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/qcustomplot.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/taskspaceoffline.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/taskspaceofflineRamp.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/taskspaceonline1.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/taskspaceonline2.cpp">
          <Option target="SURENA4PDTest"/>
-         <Option target="SURENA4Offline"/>
          <Option target="SURENA4OfflineRamp"/>
          <Option target="SURENA4PushRecovery"/>
          <Option target="SURENA4Online"/>
          <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
+         <Option target="SURENA4Online1"/>
+         <Option target="choreonoidsurena"/>
+      </Unit>
+      <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/Sources/taskspaceonline3.cpp">
+         <Option target="SURENA4PDTest"/>
+         <Option target="SURENA4OfflineRamp"/>
+         <Option target="SURENA4PushRecovery"/>
+         <Option target="SURENA4Online"/>
+         <Option target="SURENA4Online2"/>
+         <Option target="SURENA4Offline"/>
+         <Option target="SURENA4Online3"/>
          <Option target="SURENA4Online1"/>
          <Option target="choreonoidsurena"/>
       </Unit>
@@ -5849,6 +5980,9 @@
           <Option virtualFolder="CMake Files\sample\SURENA\" />
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/surena4online2.cnoid">
+          <Option virtualFolder="CMake Files\sample\SURENA\" />
+      </Unit>
+      <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/SURENA/surena4online3.cnoid">
           <Option virtualFolder="CMake Files\sample\SURENA\" />
       </Unit>
       <Unit filename="/home/milad/software/choreonoid/Surena4HumanoidSimulation-Choreonoid/sample/VisionSensorRTM/CMakeLists.txt">

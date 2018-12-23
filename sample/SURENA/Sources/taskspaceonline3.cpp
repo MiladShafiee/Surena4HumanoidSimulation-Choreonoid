@@ -1,5 +1,5 @@
-#include "Headers/taskspaceonline1.h"
-TaskSpaceOnline1::TaskSpaceOnline1()
+#include "Headers/taskspaceonline3.h"
+TaskSpaceOnline3::TaskSpaceOnline3()
 {
 
 
@@ -15,9 +15,10 @@ TaskSpaceOnline1::TaskSpaceOnline1()
 
     localtimingInteger=0;
     bool _walkstate=true;
+
 }
 
-void TaskSpaceOnline1::SetParameters(){
+void TaskSpaceOnline3::SetParameters(){
     YOffsetOfAnkletrajectory=0.00;//for compensating the clearance of the hip roll in experiment
 
     toeOff=true;
@@ -63,7 +64,7 @@ void TaskSpaceOnline1::SetParameters(){
     TGait=TStart+NStride*2*Tc;
 
     XofAnkleMaximumHeight=(0.22/0.35)*StepLength; // Position of ankle in x direction when it reaches maximum heigth
-    za_c=0.04;
+    za_c=0.05;
     AnkleMaximumHeight=za_c; // maximum height of ankle
     za_st_m=AnkleMaximumHeight;
     //double motiontime;
@@ -118,7 +119,7 @@ void TaskSpaceOnline1::SetParameters(){
 
 
 
-void TaskSpaceOnline1::CoeffArrayPelvis(){
+void TaskSpaceOnline3::CoeffArrayPelvis(){
 
     //------------------Coefficient of cyclic motion in X direction--------------------
     MatrixXd ord(1,2);
@@ -175,7 +176,7 @@ void TaskSpaceOnline1::CoeffArrayPelvis(){
     // ----------------Coefficient of End of Pelvis motion in x direction----------------------
 
     MatrixXd Cx_end_pTime(1,2);
-    Cx_end_pTime<<0,(T_end_p_sx_rel-TDs) ;
+    Cx_end_pTime<<(TDs),T_end_p_sx_rel ;
     MatrixXd Cx_end_pPos(1,2);
     Cx_end_pPos<<(NStep+1)*StepLength-Xs, (NStep+1)*StepLength;
     MatrixXd Cx_end_pVel(1,2);
@@ -230,7 +231,9 @@ void TaskSpaceOnline1::CoeffArrayPelvis(){
 }
 
 
-MatrixXd TaskSpaceOnline1::PelvisTrajectory(double time, int n, double localtiming,bool LastDSIndex){
+MatrixXd TaskSpaceOnline3::PelvisTrajectory(double time, int n, double localtiming,bool LastDSIndex){
+
+
     double N;
     double t;
     double xp;
@@ -500,6 +503,18 @@ MatrixXd TaskSpaceOnline1::PelvisTrajectory(double time, int n, double localtimi
 //        xp=1*StepLength*(N-1);
 //    }
 
+
+
+
+
+
+
+
+
+
+
+
+
     //Y
 
 
@@ -636,17 +651,6 @@ MatrixXd TaskSpaceOnline1::PelvisTrajectory(double time, int n, double localtimi
     dzp=0;
     ddzp=0;
 
-
-
-//    if(abs(globalVariableeee-currentLeftFootZ)>0.000000001){
-//    cout<<"ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh= "<< abs(globalVariableeee-currentLeftFootZ) <<endl;
-//    cout<<"ohhhhhhhhhhhhhhhhhhhhhhhhhhhh2222222222222222= "<< (currentLeftFootZ) <<endl;
-//    cout<<"ohhhhhhhhhhhhhhhhhhhhhhhhhhhh1111111111111111= "<< (globalVariableeee) <<endl;
-//    cout<<"ohhhhhhhhhhhhhhhhhhhhhhhhhhhh1111111111111111= "<< (localtiming) <<endl;
-
-//    }
-
-
     MatrixXd pelvis(9,1);
     pelvis<<xp,yp,zp,dxp,dyp,dzp,ddxp,ddyp,ddzp;
     return pelvis;
@@ -656,7 +660,7 @@ MatrixXd TaskSpaceOnline1::PelvisTrajectory(double time, int n, double localtimi
 
 
 
-void TaskSpaceOnline1::CoeffArrayAnkle(){
+void TaskSpaceOnline3::CoeffArrayAnkle(){
 
 
         T_s_st=.5*TStart;
@@ -778,7 +782,7 @@ void TaskSpaceOnline1::CoeffArrayAnkle(){
 }
 
 
-MatrixXd TaskSpaceOnline1::AnkleTrajectory(double time,int n, double localtiming,bool RFT_state,bool LFT_state,bool LastDSIndex){
+MatrixXd TaskSpaceOnline3::AnkleTrajectory(double time,int n, double localtiming,bool RFT_state,bool LFT_state,bool LastDSIndex){
 
     double y_ar=-0.5*_pelvisLength;
     double y_al=0.5*_pelvisLength;
@@ -832,25 +836,25 @@ n=n-1;
             z_al=currentLeftFootZ;
 
             if (tempIndex!=0) {
-                x_ar=currentRightFootX1;
-                x_al=currentLeftFootX1;//;
+                x_ar=currentRightFootX2;
+                x_al=currentLeftFootX2;//;
 
-                if (abs((n)*StepLength-currentLeftFootX1)>0.0001) {
-                    cout<<(n)*StepLength<<endl;
-                    cout<<"tt="<<localtiming<<endl;
-                    cout<<"warning!!! current left= "<<currentLeftFootX1<<endl;
+                if (abs((n)*StepLength-currentLeftFootX2)>0.0001) {
+//                    cout<<(n)*StepLength<<endl;
+//                    cout<<"tt="<<localtiming<<endl;
+//                    cout<<"warning!!! current left= "<<currentLeftFootX2<<endl;
                 }
-                if (abs((n-1)*StepLength-currentRightFootX1)>0.0001) {
-                    cout<<(n-1)*StepLength<<endl;
-                    cout<<"warning!!! current right= "<<currentRightFootX1<<endl;
+                if (abs((n-1)*StepLength-currentRightFootX2)>0.0001) {
+//                    cout<<(n-1)*StepLength<<endl;
+//                    cout<<"warning!!! current right= "<<currentRightFootX2<<endl;
                 }
 
 
                //  LeftSupport=true;
             }
             else {
-                x_ar=currentRightFootX1;
-                x_al=currentLeftFootX1;
+                x_ar=currentRightFootX2;
+                x_al=currentLeftFootX2;
                // LeftSupport=true;
             }
         }
@@ -858,8 +862,8 @@ n=n-1;
         else if (localtiming<Tc){//single support of cyclic walking
 
                 MatrixXd output1=GetAccVelPos(C_cy_x_ar,localtiming-TDs,0,5);
-                x_ar=(tempIndex!=0)*((currentRightFootX1+output1(0,0)))+(tempIndex==0)*currentRightFootX1;
-                x_al=(tempIndex!=0)*currentLeftFootX1+(tempIndex==0)*((currentLeftFootX1+output1(0,0)));
+                x_ar=(tempIndex!=0)*((RFT_state==true)*(currentRightFootX2)+(RFT_state!=true)*(currentRightFootX2+output1(0,0)))+(tempIndex==0)*currentRightFootX2;
+                x_al=(tempIndex!=0)*currentLeftFootX2+(tempIndex==0)*((LFT_state==true)*(currentLeftFootX2)+(LFT_state!=true)*(currentLeftFootX2+output1(0,0)));
 
                 if (tempIndex!=0) {
                //     LeftSupport=true;
@@ -875,8 +879,8 @@ n=n-1;
                 }
                 else{
                     MatrixXd output2=GetAccVelPos(C_cy_z_ar.row(1),localtiming-TDs,TSS/2,5);
-                    z_al=(tempIndex!=0)*currentLeftFootZ+(tempIndex==0)*((currentLeftFootZ+output2(0,0)));
-                    z_ar=(tempIndex!=0)*((currentRightFootZ+output2(0,0)))+(tempIndex==0)*currentRightFootZ;
+                    z_al=(tempIndex!=0)*currentLeftFootZ+(tempIndex==0)*((LFT_state==true)*currentLeftFootZ+(LFT_state!=true)*(currentLeftFootZ+output2(0,0)));
+                    z_ar=(tempIndex!=0)*((RFT_state==true)*(currentRightFootZ)+(RFT_state!=true)*(currentRightFootZ+output2(0,0)))+(tempIndex==0)*currentRightFootZ;
                 }
         }
 
@@ -887,7 +891,7 @@ n=n-1;
             n=n-1;
 
 
-         //   cout<<"ohhhhh= "<< (currentLeftFootX1) <<endl;
+         //   cout<<"ohhhhh= "<< (currentLeftFootX2) <<endl;
 
 
             int tempIndex=fmod(n,2);// shows which foot is swing foot (in cyclic mode left foots is swinging in the even steps(N))
@@ -895,21 +899,21 @@ n=n-1;
             if (localtiming<=(TDs+0.001)){// double support of cyclic walking
                 z_ar=currentRightFootZ;
                 z_al=currentLeftFootZ;
-//                cout<<"warning!!! current left= "<<currentLeftFootX1<<endl;
-//                cout<<"warning!!! current Right= "<<currentRightFootX1<<endl;
+//                cout<<"warning!!! current left= "<<currentLeftFootX2<<endl;
+//                cout<<"warning!!! current Right= "<<currentRightFootX2<<endl;
 //                if (tempIndex!=0) {
-//                    x_ar=currentRightFootX1;
-//                    x_al=currentLeftFootX1;//;
+//                    x_ar=currentRightFootX2;
+//                    x_al=currentLeftFootX2;//;
 
 //                }
 //                else {
-                    x_ar=currentRightFootX1;
-                    x_al=currentLeftFootX1;
+                    x_ar=currentRightFootX2;
+                    x_al=currentLeftFootX2;
                    // LeftSupport=true;
 //                }
-                    if (time>37.19  && time<37.25) {
-                                  cout<<x_ar<<" timing= "<<time<<endl<<flush;
-                }
+//                    if (time>37.19  && time<37.25) {
+//                                  cout<<x_ar<<" timing= "<<time<<endl<<flush;
+//                }
 
             }
 
@@ -919,13 +923,13 @@ n=n-1;
 
                 MatrixXd output1=GetAccVelPos(C_end_x_ar.row(0),localtiming,0,5);
 
-                x_ar=currentRightFootX1+output1(0,0);
+                x_ar=currentRightFootX2+output1(0,0);
 
-                x_al=currentLeftFootX1;//*/(2*NStride+1)*StepLength;/*
+                x_al=currentLeftFootX2;//*/(2*NStride+1)*StepLength;/*
                 z_al=currentLeftFootZ;
 
-//                 cout<<"warning!!! current left= "<<currentLeftFootX1<<endl;
-//                 cout<<"warning!!! current Right= "<<currentRightFootX1<<endl;
+//                 cout<<"warning!!! current left= "<<currentLeftFootX2<<endl;
+//                 cout<<"warning!!! current Right= "<<currentRightFootX2<<endl;
                 if (localtiming<=(T_end_a_e-T_end_a_s)/2){
                     MatrixXd output2=GetAccVelPos(C_end_z_ar.row(0),localtiming,0,5);
                     z_ar=currentRightFootZ+output2(0,0);//currentRightFootZ+output2(0,0);
@@ -938,29 +942,27 @@ n=n-1;
                 }
 
 
-                if (time>37.2  && time<37.25) {
-                              cout<<x_ar<<" timing= "<<time<<endl<<flush;
-            }
-
+//                if (time>37.2  && time<37.25) {
+//                              cout<<x_ar<<" timing= "<<time<<endl<<flush;
+//            }
+ // cout<<currentRightFootX2<<endl<<flush;
 
             }
             else{
 
-            //     cout<<"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj= "<<currentLeftFootX1<<endl;
+            //     cout<<"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj= "<<currentLeftFootX2<<endl;
 
-                x_ar=currentRightFootX1;
-                z_ar=currentRightFootZ;
+                x_ar=currentRightFootX2;//(2*NStride+1)*StepLength;
+                z_ar=currentRightFootZ;//_lenghtOfAnkle;
 
-                x_al=currentLeftFootX1;
-                z_al=currentLeftFootZ;
+                x_al=currentLeftFootX2;//(2*NStride+1)*StepLength;
+                z_al=currentLeftFootZ;//_lenghtOfAnkle;
             }
         }
        // double tt=time-(MotionTime-TEnd);
-
     }
-    //cout<<currentRightFootX1<<endl;
-  // cout<<localtiming<<endl;
-//globalVariableeee=z_al;
+
+
     MatrixXd footpos(8,1);
     footpos<<x_al,y_al,z_al,pitch_al,x_ar,y_ar,z_ar,pitch_ar;
     return footpos;
@@ -969,7 +971,7 @@ n=n-1;
 
 
 
-MatrixXd TaskSpaceOnline1::GetAccVelPos(MatrixXd Coef,double time,double ti,int PolynomialOrder)
+MatrixXd TaskSpaceOnline3::GetAccVelPos(MatrixXd Coef,double time,double ti,int PolynomialOrder)
 {
     int PolyNomialDegree=PolynomialOrder;
     MatrixXd T(PolyNomialDegree+1,1);

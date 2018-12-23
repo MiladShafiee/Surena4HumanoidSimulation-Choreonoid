@@ -65,7 +65,7 @@ class SURENA4Online1 : public SimpleController
 
     BodyPtr ioBody;
     Robot SURENA;
-    TaskSpaceOnline1 SURENAOnlineTaskSpace;
+    TaskSpaceOnline1 SURENAOnlineTaskSpace1;
 
     MatrixXd PoseRoot;
     MatrixXd PoseRFoot;
@@ -102,7 +102,7 @@ public:
 
         ioBody = io->body();
 
-        SURENAOnlineTaskSpace.StepNumber=1;
+        SURENAOnlineTaskSpace1.StepNumber=1;
 
         dt = io->timeStep();
         tempIO=io;
@@ -137,8 +137,6 @@ public:
             MatrixXd ZAcceleration(1,2);
             ZAcceleration<<0.000,0.000;
 
-
-
             MatrixXd Time(1,2);
             Time<<0,DurationOfStartPhase;
             MatrixXd CoefZStart =Coef.Coefficient(Time,ZPosition,ZVelocity,ZAcceleration);
@@ -146,15 +144,15 @@ public:
             double zStart=0;
             double yStart=0;
             double xStart=0;
-            StartTime=StartTime+SURENAOnlineTaskSpace._timeStep;
+            StartTime=StartTime+SURENAOnlineTaskSpace1._timeStep;
 
-            MatrixXd outputZStart= SURENAOnlineTaskSpace.GetAccVelPos(CoefZStart,StartTime,0,5);
+            MatrixXd outputZStart= SURENAOnlineTaskSpace1.GetAccVelPos(CoefZStart,StartTime,0,5);
             zStart=outputZStart(0,0);
 
             PoseRoot<<xStart,yStart,zStart,0,0,0;
 
-            SURENAOnlineTaskSpace.CoMXVector.append(0);
-            SURENAOnlineTaskSpace.timeVector.append(SURENAOnlineTaskSpace.globalTime);
+            SURENAOnlineTaskSpace1.CoMXVector.append(0);
+            SURENAOnlineTaskSpace1.timeVector.append(SURENAOnlineTaskSpace1.globalTime);
 
             PoseRFoot<<0,
                     -0.11500,
@@ -175,7 +173,7 @@ public:
         }
 
 
-        if (endPhase==true &&  StartTime>=(DurationOfStartPhase+SURENAOnlineTaskSpace.MotionTime) && StartTime<=DurationOfendPhase+DurationOfStartPhase+SURENAOnlineTaskSpace.MotionTime) {
+        if (endPhase==true &&  StartTime>=(DurationOfStartPhase+SURENAOnlineTaskSpace1.MotionTime) && StartTime<=DurationOfendPhase+DurationOfStartPhase+SURENAOnlineTaskSpace1.MotionTime) {
             MinimumJerkInterpolation Coef;
             MatrixXd ZPosition(1,2);
             ZPosition<<0.860,0.95100;
@@ -185,32 +183,32 @@ public:
             ZAcceleration<<0.000,0.000;
 
             MatrixXd Time(1,2);
-            Time<<DurationOfStartPhase+SURENAOnlineTaskSpace.MotionTime,DurationOfStartPhase+SURENAOnlineTaskSpace.MotionTime+DurationOfendPhase;
+            Time<<DurationOfStartPhase+SURENAOnlineTaskSpace1.MotionTime,DurationOfStartPhase+SURENAOnlineTaskSpace1.MotionTime+DurationOfendPhase;
             MatrixXd CoefZStart =Coef.Coefficient(Time,ZPosition,ZVelocity,ZAcceleration);
 
             double zStart=0;
             double yStart=0;
             double xStart=0;
-            StartTime=StartTime+SURENAOnlineTaskSpace._timeStep;
+            StartTime=StartTime+SURENAOnlineTaskSpace1._timeStep;
 
-            MatrixXd outputZStart= SURENAOnlineTaskSpace.GetAccVelPos(CoefZStart,StartTime,DurationOfStartPhase+SURENAOnlineTaskSpace.MotionTime,5);
+            MatrixXd outputZStart= SURENAOnlineTaskSpace1.GetAccVelPos(CoefZStart,StartTime,DurationOfStartPhase+SURENAOnlineTaskSpace1.MotionTime,5);
             zStart=outputZStart(0,0);
 
             PoseRoot<<xStart,yStart,zStart,0,0,0;
 
-            SURENAOnlineTaskSpace.CoMXVector.append(0);
-            SURENAOnlineTaskSpace.timeVector.append(SURENAOnlineTaskSpace.globalTime);
+            SURENAOnlineTaskSpace1.CoMXVector.append(0);
+            SURENAOnlineTaskSpace1.timeVector.append(SURENAOnlineTaskSpace1.globalTime);
 
             PoseRFoot<<0,
                     -0.11500,
-                    0.112000,
+                    SURENAOnlineTaskSpace1.currentRightFootZ,
                     0,
                     0,
                     0;
 
             PoseLFoot<<0,
                     0.11500,
-                    0.11200,
+                    SURENAOnlineTaskSpace1.currentLeftFootZ,
                     0,
                     0,
                     0;
@@ -220,15 +218,15 @@ public:
         }
 
 
-        int NumberOfTimeStep=(SURENAOnlineTaskSpace.Tc/SURENAOnlineTaskSpace._timeStep)+1;
-        int NumberOfTimeStepDS=(SURENAOnlineTaskSpace.TDs/SURENAOnlineTaskSpace._timeStep)+1;
-        int NumberOfTimeStepEnd=(SURENAOnlineTaskSpace.TEnd/SURENAOnlineTaskSpace._timeStep)+1;
+        int NumberOfTimeStep=(SURENAOnlineTaskSpace1.Tc/SURENAOnlineTaskSpace1._timeStep)+1;
+        int NumberOfTimeStepDS=(SURENAOnlineTaskSpace1.TDs/SURENAOnlineTaskSpace1._timeStep)+1;
+        int NumberOfTimeStepEnd=(SURENAOnlineTaskSpace1.TEnd/SURENAOnlineTaskSpace1._timeStep)+1;
 
 
         //---------------------------------------------------------------------------------//
         //--------------------------------main cycle of walking----------------------------//
         //---------------------------------------------------------------------------------//
-        if (StartTime>DurationOfStartPhase && StartTime<(DurationOfStartPhase+SURENAOnlineTaskSpace.MotionTime)){
+        if (StartTime>DurationOfStartPhase && StartTime<(DurationOfStartPhase+SURENAOnlineTaskSpace1.MotionTime)){
 
             bool walk=true;
             double m1;
@@ -239,36 +237,36 @@ public:
             double m6;
             double m7;
             double m8;
-            StartTime=StartTime+SURENAOnlineTaskSpace._timeStep;
+            StartTime=StartTime+SURENAOnlineTaskSpace1._timeStep;
 
             MatrixXd P;
             if(walk==true){
 
-                if ((SURENAOnlineTaskSpace.StepNumber==1) && (SURENAOnlineTaskSpace.localTiming>=SURENAOnlineTaskSpace.TStart) ) {
-                    SURENAOnlineTaskSpace.localTiming=0.0020000000000;//0.001999999999000000;
-                    SURENAOnlineTaskSpace.localtimingInteger=1;
-                    SURENAOnlineTaskSpace.StepNumber=SURENAOnlineTaskSpace.StepNumber+1;
+                if ((SURENAOnlineTaskSpace1.StepNumber==1) && (SURENAOnlineTaskSpace1.localTiming>=SURENAOnlineTaskSpace1.TStart) ) {
+                    SURENAOnlineTaskSpace1.localTiming=0.0020000000000;//0.001999999999000000;
+                    SURENAOnlineTaskSpace1.localtimingInteger=1;
+                    SURENAOnlineTaskSpace1.StepNumber=SURENAOnlineTaskSpace1.StepNumber+1;
                     KLtemp=false;
                 }
 
 
 
-                else if ((SURENAOnlineTaskSpace.localtimingInteger>=NumberOfTimeStep) &&   (SURENAOnlineTaskSpace.StepNumber>1    &&   SURENAOnlineTaskSpace.StepNumber<(SURENAOnlineTaskSpace.NStep+2))) {
+                else if ((SURENAOnlineTaskSpace1.localtimingInteger>=NumberOfTimeStep) &&   (SURENAOnlineTaskSpace1.StepNumber>1    &&   SURENAOnlineTaskSpace1.StepNumber<(SURENAOnlineTaskSpace1.NStep+2))) {
 
 
-                    SURENAOnlineTaskSpace.StepNumber=SURENAOnlineTaskSpace.StepNumber+1;
+                    SURENAOnlineTaskSpace1.StepNumber=SURENAOnlineTaskSpace1.StepNumber+1;
 
-                    if (SURENAOnlineTaskSpace.StepNumber==SURENAOnlineTaskSpace.NStep+2) {
-                        SURENAOnlineTaskSpace.localTiming=0.0020000000000;
-                        SURENAOnlineTaskSpace.localtimingInteger=1;
+                    if (SURENAOnlineTaskSpace1.StepNumber==SURENAOnlineTaskSpace1.NStep+2) {
+                        SURENAOnlineTaskSpace1.localTiming=0.0020000000000;
+                        SURENAOnlineTaskSpace1.localtimingInteger=1;
                     }
                     else {
-                        SURENAOnlineTaskSpace.localtimingInteger=1;
-                        SURENAOnlineTaskSpace.localTiming=0.0020000000000;//0.00199999999;
+                        SURENAOnlineTaskSpace1.localtimingInteger=1;
+                        SURENAOnlineTaskSpace1.localTiming=0.0020000000000;//0.00199999999;
                     }
 
 
-                    if ((SURENAOnlineTaskSpace.StepNumber%2)==0) {
+                    if ((SURENAOnlineTaskSpace1.StepNumber%2)==0) {
                         KLtemp=false;
                     }
                     else {
@@ -278,26 +276,26 @@ public:
 
                 }
 
-                else if (indexLastDS==true && SURENAOnlineTaskSpace.localtimingInteger>=NumberOfTimeStepDS && SURENAOnlineTaskSpace.StepNumber==SURENAOnlineTaskSpace.NStep+2) {
-                    SURENAOnlineTaskSpace.localTiming=0.00200000000000;
-                    SURENAOnlineTaskSpace.localtimingInteger=1;
+                else if (indexLastDS==true && SURENAOnlineTaskSpace1.localTiming>=SURENAOnlineTaskSpace1.TDs && SURENAOnlineTaskSpace1.StepNumber==SURENAOnlineTaskSpace1.NStep+2) {
+                    SURENAOnlineTaskSpace1.localTiming=0.00200000000000;
+                    SURENAOnlineTaskSpace1.localtimingInteger=1;
                     indexLastDS=false;
                     KLtemp=false;
                 }
 
-                else if (indexLastDS==false && SURENAOnlineTaskSpace.localtimingInteger>(NumberOfTimeStepEnd)) {
+                else if (indexLastDS==false && SURENAOnlineTaskSpace1.localTiming>(0.5*SURENAOnlineTaskSpace1.TEnd)) {
                     KRtemp=false;
-                    cout<<SURENAOnlineTaskSpace.localTiming<<endl;
-                    SURENAOnlineTaskSpace.localTiming=0.00200000000000;
-                    SURENAOnlineTaskSpace.localtimingInteger=1;
+                    //cout<<SURENAOnlineTaskSpace1.localTiming<<endl;
+                    /*SURENAOnlineTaskSpace1.localTiming=0.00200000000000;
+                    SURENAOnlineTaskSpace1.localtimingInteger=1*/;
                 }
                 //                links=SURENA.GetLinks();
 
 
                 if (KLtemp==false) {
                     KLtemp=true;
-                    SURENAOnlineTaskSpace.currentLeftFootX1=links[12].PositionInWorldCoordinate(0);
-                    SURENAOnlineTaskSpace.currentLeftFootZ=links[12].PositionInWorldCoordinate(2);
+                    SURENAOnlineTaskSpace1.currentLeftFootX1=links[12].PositionInWorldCoordinate(0);
+                    SURENAOnlineTaskSpace1.currentLeftFootZ=links[12].PositionInWorldCoordinate(2);
                 }
 
 
@@ -305,13 +303,13 @@ public:
 
                 if (KRtemp==false) {
                     KRtemp=true;
-                    SURENAOnlineTaskSpace.currentRightFootX1=links[6].PositionInWorldCoordinate(0);
-                    SURENAOnlineTaskSpace.currentRightFootZ=links[6].PositionInWorldCoordinate(2);
+                    SURENAOnlineTaskSpace1.currentRightFootX1=links[6].PositionInWorldCoordinate(0);
+                    SURENAOnlineTaskSpace1.currentRightFootZ=links[6].PositionInWorldCoordinate(2);
                 }
 
 
 
-                MatrixXd m=SURENAOnlineTaskSpace.AnkleTrajectory(SURENAOnlineTaskSpace.globalTime,SURENAOnlineTaskSpace.StepNumber,SURENAOnlineTaskSpace.localTiming,RFT,LFT,indexLastDS);
+                MatrixXd m=SURENAOnlineTaskSpace1.AnkleTrajectory(SURENAOnlineTaskSpace1.globalTime,SURENAOnlineTaskSpace1.StepNumber,SURENAOnlineTaskSpace1.localTiming,RFT,LFT,indexLastDS);
                 m1=m(0,0);
                 m2=m(1,0);
                 m3=m(2,0);
@@ -321,12 +319,12 @@ public:
                 m7=m(6,0);
                 m8=m(7,0);
 
-                P=SURENAOnlineTaskSpace.PelvisTrajectory(SURENAOnlineTaskSpace.globalTime,SURENAOnlineTaskSpace.StepNumber,SURENAOnlineTaskSpace.localTiming,indexLastDS);
-                SURENAOnlineTaskSpace.globalTime=SURENAOnlineTaskSpace.globalTime+SURENAOnlineTaskSpace._timeStep;
-                SURENAOnlineTaskSpace.localTiming=SURENAOnlineTaskSpace.localTiming+SURENAOnlineTaskSpace._timeStep;
+                P=SURENAOnlineTaskSpace1.PelvisTrajectory(SURENAOnlineTaskSpace1.globalTime,SURENAOnlineTaskSpace1.StepNumber,SURENAOnlineTaskSpace1.localTiming,indexLastDS);
+                SURENAOnlineTaskSpace1.globalTime=SURENAOnlineTaskSpace1.globalTime+SURENAOnlineTaskSpace1._timeStep;
+                SURENAOnlineTaskSpace1.localTiming=SURENAOnlineTaskSpace1.localTiming+SURENAOnlineTaskSpace1._timeStep;
 
-                SURENAOnlineTaskSpace.localtimingInteger= SURENAOnlineTaskSpace.localtimingInteger+1;
-                if (round(SURENAOnlineTaskSpace.globalTime)<=round(SURENAOnlineTaskSpace.MotionTime)){
+                SURENAOnlineTaskSpace1.localtimingInteger= SURENAOnlineTaskSpace1.localtimingInteger+1;
+                if (round(SURENAOnlineTaskSpace1.globalTime)<=round(SURENAOnlineTaskSpace1.MotionTime)){
 
 
                     PoseRoot<<P(0,0),
@@ -336,8 +334,8 @@ public:
                             0,
                             0;
 
-                    SURENAOnlineTaskSpace.CoMXVector.append(m5);
-                    SURENAOnlineTaskSpace.timeVector.append(SURENAOnlineTaskSpace.globalTime);
+                    SURENAOnlineTaskSpace1.CoMXVector.append(m5);
+                    SURENAOnlineTaskSpace1.timeVector.append(SURENAOnlineTaskSpace1.globalTime);
 
                     PoseRFoot<<m5,
                             m6,
@@ -361,7 +359,7 @@ public:
         }
 
 
-       //cout<<SURENAOnlineTaskSpace.MotionTime<<flush<<endl;
+       //cout<<SURENAOnlineTaskSpace1.MotionTime<<flush<<endl;
 
         links = SURENA.GetLinks();
 
@@ -373,7 +371,7 @@ public:
             //cout << qref[i-1] <<" , "<<flush;
         }
 
-        if (SURENAOnlineTaskSpace.globalTime>(SURENAOnlineTaskSpace.MotionTime-2*SURENAOnlineTaskSpace._timeStep) && SURENAOnlineTaskSpace.globalTime<(SURENAOnlineTaskSpace.MotionTime-SURENAOnlineTaskSpace._timeStep)){
+        if (SURENAOnlineTaskSpace1.globalTime>(SURENAOnlineTaskSpace1.MotionTime-2*SURENAOnlineTaskSpace1._timeStep) && SURENAOnlineTaskSpace1.globalTime<(SURENAOnlineTaskSpace1.MotionTime-SURENAOnlineTaskSpace1._timeStep)){
             doplot();
         }
 
@@ -385,7 +383,7 @@ public:
             u = (qref[i] - q) * pgain[i] + (0.0 - dq) * dgain[i];//note:the joint velocity should not be zero
             qold[i] = q;
             joint->u() = u;
-            //cout<<SURENAOnlineTaskSpace.globalTime<<endl;
+            //cout<<SURENAOnlineTaskSpace1.globalTime<<endl;
 
         }
 
@@ -394,7 +392,7 @@ public:
     }
 
     void doplot(){
-        miladplot.Plot(SURENAOnlineTaskSpace);
+        miladplot.Plot(SURENAOnlineTaskSpace1);
     }
 
 };
